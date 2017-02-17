@@ -1,0 +1,15 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cJSON/README#1 $
+
+The Haathi extension and servers communicate using the JSON format
+that is provided by this third-party source code.  It almost compiles
+for all target platforms, but needs a helper include file.  Therefore,
+all dependent projects should include this file instead of the one
+in the libcpp/cJSON directory.
+
+As this is source code, both debug and release versions are supported
+and it can potentially (i.e., under Windows) link statically to the
+C runtime library.  When that happens, and each of boost, cyassl, and
+cryptopp also link statically to the runtime library, then Haathi
+itself is independent of the library.  Unfortunately, the library
+doesn't include the Windows networking functions and those will
+eventually be linked dynamically.

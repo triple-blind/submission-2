@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<components xmlns="http://openoffice.org/2010/uno-components"> 
+  <component loader="com.sun.star.loader.SharedLibrary" uri="Windows/complextoolbarcontrols.uno.dll"> 
+    <implementation name="vnd.demo.Impl.ProtocolHandler"> 
+      <service name="vnd.demo.ProtocolHandler"/> 
+    </implementation> 
+  </component> 
+</components> 

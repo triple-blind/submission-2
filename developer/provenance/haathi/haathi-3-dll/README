@@ -1,0 +1,39 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-3-dll/README#1 $
+
+Only a small glue file stands between the Haathi library and the Haathi
+extension.  The source file of this project exports the appropriate
+functions that perform the appropriate operations to integrate Haathi
+into OpenOffice.
+
+This glue file seems to have changed significantly since previous
+generations of the project, some of which worked with LibreOffice.
+A previous version is stored here (well, actually in src/dll) as
+exports.cpp.old for reference.  The problem with the older versions
+was that they did not supply a Context (Reference<XComponentContext>)
+to various dialogs and other objects.  Instead, a bootstrapping method
+was called.  Unfortunately, that strategy no longer worked.  Bootstrapping,
+it turned out, was intended for use from outside OpenOffice rather than
+from an extension running within it.
+
+The resulting DLL (.so or .dylib) file is eventually copied to the ../dll
+directory.  For Windows and Linux this is done without change to the file.
+For Macintosh, some extra fiddling is done with symbols so that it makes
+use of other libraries in the OpenOffice installation directory instead
+of elsewhere.  This is orchestrated by the postbuild.mk file.
+
+In order to debug this project, i.e. the Haathi extension, the extension must
+be installed first.  The following haathi-4-run project can help with that.
+Then under Windows, make sure that haathi-3-dll is the StartUp Project and run
+"C:\Program Files (x86)\OpenOffice 4\program\soffice.bin", which should be
+configured in the project.  Note that the breakpoints will not seem
+active until the Provenance menu item is selected.  Alternatively, attach
+to the process soffice.bin.  In the Debug menu select Attach to Process...
+For either method you can check to make sure that the haathi.uno.dll (or .so
+or .dylib) library gets loaded and it should appear in, for example, the output
+window of Visual Studio.
+
+Under Linux, gdb can be used for debugging, at least according to the OpenOffice
+website.  It might possibly be usable from within Eclipse), but there is at the
+time of this writing no Apple-approved version of gdb or one that is even
+pre-packaged for Macintosh.  Apple just changed to lldb, but that had not been
+incorporated into Eclipse's toolchain

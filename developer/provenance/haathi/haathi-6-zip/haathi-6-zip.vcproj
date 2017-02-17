@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="haathi-6-zip"
+	ProjectGUID="{5BD90EA7-8206-4D3D-9046-CAA40268EAD9}"
+	RootNamespace="haathi-6-zip"
+	Keyword="MakeFileProj"
+	TargetFrameworkVersion="196613"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Auto|Win32"
+			OutputDirectory="$(ProjectDir)"
+			IntermediateDirectory="$(OutDir)"
+			ConfigurationType="0"
+			BuildLogFile="$(SolutionDir)log\$(ProjectName)-$(ConfigurationName)-Log.htm"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake /I /f makefile.windows.mk build"
+				ReBuildCommandLine="nmake /I /f makefile.windows.mk rebuild"
+				CleanCommandLine="nmake /I /f makefile.windows.mk clean"
+				Output="haathi.zip"
+				PreprocessorDefinitions="WIN32;_DEBUG"
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath=".\makefile.windows.mk"
+			>
+		</File>
+		<File
+			RelativePath=".\README"
+			>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

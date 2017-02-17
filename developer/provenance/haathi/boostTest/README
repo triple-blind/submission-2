@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/boostTest/README#1 $
+
+This just checks to see whether basic Boost functionality is present.
+Note that the entire set of Boost files is not included with the source
+distribution.  Included is only what seemed necessary for the serialization
+portion which Haathi uses.  Linux and Macintosh may include preinstalled
+Boost libraries to support their applications.  However, they will likely
+not include the header files needed to compile new programs.  In either case,
+it is possible that a different version is being used than what Haathi
+expects.  This test uses functions included in both the header and library
+portions of Boost and should use the version that is distributed with
+Haathi rather than anything preinstalled.

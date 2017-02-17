@@ -1,0 +1,4 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/autoPdf/README#1 $
+
+This project contains shared code for the autoPdf, autoRnd, and autotype projects.
+The watermarkBitExtractor also makes use of it.

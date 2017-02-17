@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cyasslSocketTest/README#1 $
+
+This project just tests whether any connection can be made via
+a socket on the localhost using the TrustedServer default port.
+The server could come from the MockServer or TrustedServer Java
+projects or actually the cyasslServerTest C++ project and
+possibly elsewhere.  No data is transferred, so the certificates
+do not come into play.  The socket is opened in the way CyaSSL
+does it, so it shows that CyaSSL can get at least this far.

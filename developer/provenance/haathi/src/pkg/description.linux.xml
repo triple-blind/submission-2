@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/haathi/src/pkg/description.linux.xml#1 $-->
+<description
+		xmlns="http://openoffice.org/extensions/description/2006"
+		xmlns:d="http://openoffice.org/extensions/description/2006"
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+
+	<!--
+	This is the current version of the extension. I do not know how often
+	we should update ... related to the software obfuscation I'm sure.
+	-->
+	<version value="0.31" />
+
+	<!--
+	This must match EXTENSION_REFERENCE_URL as defined in configuration.hpp
+	The purpose of this is to identify the extension and its path when it is installed.
+	-->
+	<identifier value="com.provenance.extensions.haathi" />
+
+	<platform value="linux_x86_64" />
+
+	<dependencies>
+		<OpenOffice.org-minimal-version value="4.0" d:name="OpenOffice.org 4.0"/>
+	</dependencies>
+	
+	<update-information>
+		<src xlink:href="http://collberg.github.io/provenance/gh-pages/Linux/update.xml" />
+	</update-information>
+
+	<!--
+	This stores the licenses for the extension. We should probably establish a license that
+	we intend on releasing this under soon... Probably GPL v2.
+	-->
+	<registration>
+		<simple-license accept-by="admin" suppress-on-update="true" >
+			<license-text xlink:href="registration/license/license_de-DE.txt" lang="de-DE" />
+			<license-text xlink:href="registration/license/license_en-GB.txt" lang="en-GB" />
+			<license-text xlink:href="registration/license/license_en-NZ.txt" lang="en-NZ" />
+			<license-text xlink:href="registration/license/license_en-US.txt" lang="en-US" />
+		</simple-license>
+	</registration>
+
+	<!--
+	This stores the webpage, as well as the "Developers" for the extension.
+	Used primarily for the Extension Manager.
+	-->
+	<publisher>
+		<!-- We don't support other languages yet, but soon...
+		<name xlink:href="http://extensions.openoffice.org/testarea/desktop/publisher/publisher_de.html" lang="de">
+			My OpenOffice de
+		</name>
+		-->
+		<name xlink:href="http://www.cs.arizona.edu" lang="en">University of Arizona</name>
+	</publisher>
+
+	<!--release-notes>
+		<src xlink:href="http://extensions.openoffice.org/testarea/desktop/publisher/release-notes_de.txt" lang="de" />
+		<src xlink:href="http://extensions.openoffice.org/testarea/desktop/publisher/release-notes_en.txt" lang="en" />
+	</release-notes-->
+
+	<!--
+	The name of the extension as it appears in the Extension Manager, and the command line
+	utility unopkg.
+	-->
+	<display-name>
+		<name lang="de">Haathi</name>
+		<name lang="en">Haathi</name>
+	</display-name>
+
+		<!--
+		The Image to display in the Extension Manager.
+		Note that the "high-contrast" can just be the same image.
+		-->
+	<icon>
+		<default xlink:href="images/haathi_logo.jpg" />
+		<high-contrast xlink:href="images/haathi_logo_hc.jpg" />
+	</icon>
+
+	<!--
+	These store (in various languages) the text that appears in the Extension Manager
+	to describe the extension. It may also appear elsewhere, like the help menu...
+	-->
+	<extension-description>
+		<src xlink:href="description/desc_de.txt" lang="de" />
+		<src xlink:href="description/desc_en.txt" lang="en" />
+	</extension-description>
+</description>

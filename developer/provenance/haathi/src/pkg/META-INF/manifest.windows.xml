@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest:manifest PUBLIC "-//OpenOffice.org//DTD Manifest 1.0//EN" "Manifest.dtd">
+<manifest:manifest xmlns:manifest="http://openoffice.org/2001/manifest">
+
+<!--
+Component Registration Data
+
+This is where we indicate the files that define this component and its interaction as an UNO component.
+-->
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.configuration-data"
+                       manifest:full-path="Addons.xcu"/>
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.configuration-data"
+                       manifest:full-path="ProtocolHandler.xcu"/>
+                       
+<!--
+Help Menu stuff
+
+This is where we register all of the help information to display in the Help dialog.
+-->
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.help" manifest:full-path="help"/>
+
+<!--
+Component Info stuff
+
+This is where we specify the location of a file that indicates where the components are stored.
+Since each component can be implemented in an arbitrary language (C++, Java, BASIC, etc.), we have 
+yet another file (usually with the extension ".components") that specifies the service name and the 
+implementation details of each component.
+-->
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-components;platform=Windows_x86"
+                       manifest:full-path="haathi.components"/>
+<!--
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-components;platform=Linux_x86_64"
+                       manifest:full-path="haathi.components"/>
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-components;platform=MacOSX_x86"
+                       manifest:full-path="haathi.components"/>
+-->
+<!--
+This is where we specify the location of the dynamic libraries for each of the supported systems.
+
+To add a new system, use the same format, but change the argument after "platform=" to whatever
+system you plan on adding. Then, in the "full-path=" argument, change the path to the dynamic
+library for that system. Remember that you also have to bundle the compiled shared library for that 
+system into the directory specified here!
+-->
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-component;type=native;platform=Windows_x86"
+                       manifest:full-path="Windows_x86/haathi.uno.dll"/>
+<!--
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-component;type=native;platform=MacOSX_x86"
+                       manifest:full-path="MacOSX_x86/haathi.uno.dylib"/>
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-component;type=native;platform=Linux_x86_64"
+                       manifest:full-path="Linux_x86_64/haathi.uno.so"/>
+  <manifest:file-entry manifest:media-type="application/vnd.sun.star.uno-component;type=native;platform=Linux_x86"
+                       manifest:full-path="Linux_x86/haathi.uno.so"/>
+-->
+</manifest:manifest>

@@ -1,0 +1,14 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/tesseract/README#1 $
+
+According to its website, Tesseract is an OCR engine.  It is used with the
+traitorTracer to detect tampering of a document's images.  In particular, it
+is involved with watermarking in the DualWatermarkExtractor and in the
+LuminanceWatermarkExtractor.  For both Windows and NonWindows, prebuilt
+libraries are being used.  Those for Windows are included with this source
+distribution (in libcpp/tesseract).  The Linux libraries can be installed
+with commands like "sudo yum install tesseract-devel".  There is as yet no
+Macintosh version unless one resorts to homebrew or similar.
+
+Since tesseract is dependent upon leptonica, it cannot be used, under Windows
+at least, in a way that statically links to the C runtime library.  Therefore
+only Debug-DynLib and Release-DynLib configurations can be built.

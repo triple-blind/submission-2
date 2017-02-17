@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-5-run/README#1 $
+
+Haathi users will (likely) install the extension into a running instance of
+OpenOffice by using the Extension Manager.  However, extensions can also be
+installed in batch mode, assuming that OpenOffice is not already running.
+This is slighly faster for developers who are living in an edit, compile,
+(install), debug cycle.  This project installs Haathi and creates a batch file
+that can repeat the process outside of the development environment.  Visual
+Studio or nmake doesn't give makefiles a complete cin/cout environment in
+which to work, so the Windows installation requires a double click on the
+generated isntallation program.  Eclipse on the other platforms can install
+the extension even if user input is required.

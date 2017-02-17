@@ -1,0 +1,6 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/catchTest/README#1 $
+
+This project demonstrates how to organize tests using catch into a
+project.  It can be copied, with appropriate name changes, to create
+new test projects.  It simply tests a factorial function and in doing
+so also ensures that catch itself is working as expected.

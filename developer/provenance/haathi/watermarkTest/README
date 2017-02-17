@@ -1,0 +1,6 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/watermarkTest/README#1 $
+
+This project can be used to run low-level unit tests on the watermarking.
+Presently it does the random number generation and makes sure that the
+same or different values are produced when the verionId is same or different.
+Before this was tested, that was not the case!

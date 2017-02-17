@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/defaultCertificates/README#1 $
+
+Haathi is able to communicate with various preconfigured but selectable
+servers.  Each has a name, IP address, port, and certificate that needs to
+be stored.  For expediency, I guess, these are stored in a readable binary
+format courtesy of boost.  This project builds the configuration file so
+that it can be included in the packaged extension.  It looks like there
+were plans for users to add servers via the extension, but the part that
+manages the certificates does not seem to be complete.  In any case, if
+a change is desired in which servers are preconfigured, start here and
+follow the trail to NetworkInfo.cpp where the values are hard-coded.

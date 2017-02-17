@@ -1,0 +1,222 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/pingTrustedTest/README#1 $
+
+The main program of this project sends an actual Haathi PING command to the
+Trusted Server in almost extactly the same way that the extension does,
+since it uses the same Haathi library to do so.  That includes JSON command
+encoding, SSL encryption with certificates, and response processing.  Start
+up the Trusted server from Java before running the test.  The Trusted
+server does not perform client verification, so only a single certificate
+file is necessary.  (It's only a question of which one.)  To test client
+verification, try the pingTrustedTest.
+
+As noted in userCreate, the certificates can be a problem.  More up to date
+information about that can be found on the Java side, in particular with 
+the KeystoreGenerator.  Below is some documentation about previous versions
+of certificates and how to generate them.
+
+-----
+
+To make keystore files, use keytool that is part of the Java distribution.
+
+keytool -genkey -keystore keystore.jks -alias alias -keyalg RSA -storepass xxx -validity 360 -keysize 1024
+keytool -exportcert -keystore keystore.jks -alias alias -file alias.pem -rfc
+
+To inspect the keystore, use
+
+keytool -list -v -keystore <file>
+
+file: plain\ca.jks
+pwd: rootpw
+alias: root
+valid: Mar 2, 2012 - Jul 16, 2013
+EXPIRED!
+
+file: new\ca_new.jks <- using this one as .\ca.jks
+pwd: rootpw
+alias: haathi
+valid: May 15, 2013 - May 15, 2017
+GOOD!
+
+Rename this simply ca.jks and use, need to generate certificate from it?
+
+file: new\ts_new.jks <- using this one as .\ts.jks
+pwd: trusted
+alias: trustedserver
+valid: May 15,2013 - May 15, 2017
+GOOD!
+
+file: new\trusted_new.jks
+pwd: trusted
+alias: trustedserver
+valid: Apr 16, 2012 - Jan 12, 2015
+GOOD!
+
+file: new\trusted_new
+INVALID KEYSTORE FORMAT!
+
+file: old\trusted_old.jks
+pwd: trusted
+alias: trustedserver
+valid: Mar 2, 2012 - Nov 28, 2014
+GOOD!
+
+file: plain\trusted.jks
+pwd: trusted
+alias: trustedserver
+valid: Mar 15, 2012 - Apr 14, 2012
+EXPIRED!
+
+file: plain\ts.ks
+pwd: ?
+
+file: plain\trustedserver_ks
+pwd: trustedserverpwd
+alias: trustedserver
+valid: Jan 13, 2012 - Oct 10, 2014
+GOOD!
+
+
+Need pem file for client such as userCreate
+
+keytool -exportcert -keystore ca.jks -alias haathi -file ca-cert.pem -rfc
+
+# Create the keystores with named sigalg
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore trusted.jks -alias trusted -keyalg RSA -sigalg SHA1withRSA -storepass password -keypass password -validity 1000 -dname "CN=localhost, OU=Unit, O=Organization, L=City, ST=State, C=US"
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore provenance.jks -alias provenance -keyalg RSA -sigalg SHA1withRSA -storepass password -keypass password -validity 1000 -dname "CN=localhost, OU=Unit, O=Organization, L=City, ST=State, C=US"
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore haathi.jks -alias haathi -keyalg RSA -sigalg SHA1withRSA -storepass password -keypass password -validity 1000 -dname "CN=localhost, OU=Unit, O=Organization, L=City, ST=State, C=US"
+
+# Create the keystores with default sigalg
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore trusted.jks -alias trusted -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US"
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore provenance.jks -alias provenance -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US"
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore haathi.jks -alias haathi -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US"
+
+
+How to generate a signed version?
+
+# Generate the public key files in cer format
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore trusted.jks -alias trusted -file trusted.cer -storepass password
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore provenance.jks -alias provenance -file provenance.cer -storepass password
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore haathi.jks -alias haathi -file haathi.cer -storepass password
+
+# Generate the public key files in pem format
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore trusted.jks -alias trusted -file trusted.pem -storepass password -rfc
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore provenance.jks -alias provenance -file provenance.pem -storepass password -rfc
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -exportcert -keystore haathi.jks -alias haathi -file haathi.pem -storepass password -rfc
+
+
+cd ..\bin
+java only.DumpPrivateKey ..\keystore\trusted.jks password trusted >> ..\keystore\trusted.key
+java only.DumpPrivateKey ..\keystore\provenance.jks password provenance >> ..\keystore\provenance.key
+java only.DumpPrivateKey ..\keystore\haathi.jks password haathi >> ..\keystore\haathi.key
+
+cd ..\keystore
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -importcert -trustcacerts -keystore trusteds.jks -file trusted.cer -storepass password
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -importcert -trustcacerts -keystore provenances.jks -file provenance.cer -storepass password
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -importcert -trustcacerts -keystore haathis.jks -file haathi.cer -storepass password
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -importcert -keystore trusted-pem.jks -file trusted.pem -storepass password
+
+
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -list -v -keystore trusted.jks
+
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore trusted.jks -alias trusted -keyalg DSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US" -keysize 512
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore provenance.jks -alias provenance -keyalg DSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US" -keysize 512
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore haathi.jks -alias haathi -keyalg DSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US" -keysize 512
+
+# Get help
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -help
+# Create the normal three
+
+# Create the ca
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -genkey -keystore ca.jks -alias ca -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US"
+
+# Sign the trusted with this ca
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -certreq -keystore trusted.jks -alias trusted -storepass password | "C:\Program Files (x86)\Java\jre7\bin\keytool" -gencert -keystore ca.jks -alias ca -storepass password | "C:\Program Files (x86)\Java\jre7\bin\keytool" -importcert -keystore trusted.jks -alias trusted -storepass password -trustcacerts
+
+
+
+# Make a certificate request from it
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -certreq -keystore ca.jks -alias ca -storepass password >> ca.req
+# Generate a certificate from request
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -gencert -keystore ca.jks -alias ca -storepass password -infile ca.req -keyalg RSA -validity 1000 -dname "CN=First Last, OU=Unit, O=Organization, L=City, ST=State, C=US" >> trusted.jks
+
+*********************************************
+Experiment based on IBM page
+*********************************************
+# Seems to use global keystore that already has a password and can't be changed so added -keystore ibm.jks
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -alias ca -dname CN=CA -genkeypair -keystore ibm.jks
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -alias ca1 -dname CN=CA -genkeypair -keystore ibm.jks
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -alias ca2 -dname CN=CA -genkeypair -keystore ibm.jks
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -alias e1 -dname CN=E1 -genkeypair -keystore ibm.jks
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -list -v -keystore ibm.jks
+
+keytool -alias ca1 -certreq -keystore ibm.jks -storepass password >> step1
+keytool -alias ca -gencert -ext san=dns:ca1 -keystore ibm.jks -storepass password < step1 >> step2
+keytool -alias ca1 -importcert -keystore ibm.jks -storepass password < step2
+# Says certificate reply was installed in keystore!
+
+"C:\Program Files (x86)\Java\jre7\bin\keytool" -list -v -keystore ibm.jks
+
+keytool -alias ca2 -certreq | keytool -alias ca1 -gencert -ext san=dns:ca2 | keytool -alias ca2 -importcert
+
+# This seemed to work
+
+***********************************************************
+My recreation of it
+
+# Make the 4 certificates
+keytool -genkey -keystore ca.jks -alias ca -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=ca, OU=Unit, O=Organization, L=City, ST=State, C=US"
+keytool -genkey -keystore trusted.jks -alias trusted -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=trusted, OU=Unit, O=Organization, L=City, ST=State, C=US"
+keytool -genkey -keystore provenance.jks -alias provenance -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=provenance, OU=Unit, O=Organization, L=City, ST=State, C=US"
+keytool -genkey -keystore haathi.jks -alias haathi -keyalg RSA -storepass password -keypass password -validity 1000 -dname "CN=haathi, OU=Unit, O=Organization, L=City, ST=State, C=US"
+
+keytool -exportcert -keystore ca.jks -alias ca -file ca-cert.pem -storepass password -rfc
+
+# allows it to be trusted
+keytool -importcert -keystore trusted.jks -alias ca -file ca-cert.pem -storepass password -trustcacerts -noprompt
+keytool -importcert -keystore provenance.jks -alias ca -file ca-cert.pem -storepass password -trustcacerts -noprompt
+keytool -importcert -keystore haathi.jks -alias ca -file ca-cert.pem -storepass password -trustcacerts -noprompt
+
+# Sign trusted, provenance, and haathi by ca
+keytool -alias trusted -certreq -keystore trusted.jks -storepass password | keytool -alias ca -gencert -keystore ca.jks -storepass password | keytool -alias trusted -importcert -keystore trusted.jks -storepass password
+# Get Failed to establish chain from reply
+# Worked when did "allows it to be trusted above"
+
+keytool -alias provenance -certreq -keystore provenance.jks -storepass password | keytool -alias ca -gencert -keystore ca.jks -storepass password | keytool -alias provenance -importcert -keystore provenance.jks -storepass password
+# Did not work when did not "allows it to be trusted above"
+
+keytool -list -v -keystore provenance.jks
+
+keytool -alias haathi -certreq -keystore haathi.jks -storepass password | keytool -alias ca -gencert -keystore ca.jks -storepass password | keytool -alias haathi -importcert -keystore haathi.jks -storepass password
+
+# make the plural ones
+
+keytool -exportcert -keystore trusted.jks -alias trusted -file trusted-cert.pem -storepass password -rfc
+keytool -exportcert -keystore provenance.jks -alias provenance -file provenance-cert.pem -storepass password -rfc
+keytool -exportcert -keystore haathi.jks -alias haathi -file haathi-cert.pem -storepass password -rfc
+
+# trusted trusts ca, provenance, and haathi
+# only have to answer for the first one
+keytool -importcert -keystore trusted-trusteds.jks -file ca-cert.pem -storepass password -alias ca -trustcacerts -noprompt
+keytool -importcert -keystore trusted-trusteds.jks -file provenance-cert.pem -storepass password -alias provenance
+keytool -importcert -keystore trusted-trusteds.jks -file haathi-cert.pem -storepass password -alias haathi
+
+# provenance trusts ca, trusted, and haathi
+keytool -importcert -keystore provenance-trusteds.jks -file ca-cert.pem -storepass password -alias ca -trustcacerts -noprompt
+keytool -importcert -keystore provenance-trusteds.jks -file trusted-cert.pem -storepass password -alias trusted
+keytool -importcert -keystore provenance-trusteds.jks -file haathi-cert.pem -storepass password -alias haathi
+
+# haathi trusts ca, trusted, and provenance
+keytool -importcert -keystore haathi-trusteds.jks -file ca-cert.pem -storepass password -alias ca -trustcacerts -noprompt
+keytool -importcert -keystore haathi-trusteds.jks -file trusted-cert.pem -storepass password -alias trusted
+keytool -importcert -keystore haathi-trusteds.jks -file provenance-cert.pem -storepass password -alias provenance
+
+
+# Need private key for haathi
+cd ..\..\DumpPrivateKey\bin
+java only.DumpPrivateKey ..\..\keystore\haathi.jks password haathi > ..\..\keystore\haathi-key.pem
+cd ..\..\keystore

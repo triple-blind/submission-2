@@ -1,0 +1,21 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-2-lib/README#1 $
+
+The second stage of the Haathi build is a straighforward compilation of the source
+code, albeit with quite a few preprocessor definitions, included directories, and
+libraries attached.  The result is a (mostly) static library which can be used for
+other projects in addition to the extension.  This allows the library to be tested
+outside of the extension environment.  That library is first produced in a local
+directory before a version is sent to the ../lib directory from which it might the
+used for the extension.
+
+The Windows compiler will combine the Haathi code and its prerequisite libraries
+into a handy single library which dependents can use without concerning themselves
+with its internal dependents (cJSON, boost, cyassl, cryptopp).  The other compilers
+don't do this and the archiver doesn't not seem to provide a way to merge all the
+libraries into one.  postbuild.mk takes care of this.  In addition, the Macintosh
+tools cannot seem to deal with a specific library like libuno_cppu.dylib.3 and
+need instead a generic uno_cppu.  On the other hand, the executable files (e.g.,
+idlc, regmerge, etc.) need the specific library.  Rather than having both files
+included, a prebuild.mk file creates a link to the specific library with the name
+of the generic one.  This should run at least once (automatically) before the
+Haathi library is used.

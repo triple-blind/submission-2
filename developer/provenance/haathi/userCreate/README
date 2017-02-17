@@ -1,0 +1,49 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/userCreate/README#1 $
+
+Use the Visual Studio or Eclipse project to compile and run UserCreate.
+This is a useful tool for creating new users.  A parallel tool exists on the Java
+side in the UserCreate project.
+ 
+Initially with an empty user table [within the SQLite database shared.db or potentially
+trusted.db or provenance.db, depending on the configuration, all in servers/db or
+thereabouts], insert a row manually with keys and certificates set as empty strings
+and give that user admin (3) privileges.  User types are defined in packet.h:
+
+enum UserType {
+	USER = 1, AUDITOR = 2, ADMINISTRATOR = 3
+};
+
+and in UserType.java:
+
+ProvenanceUser(1), ProvenanceAuditor(2), Administrator(3), Unknown(99);
+
+UserCreate.cpp currently assumes that this preconfigured user is developer@provenance.com with
+a password of "provenance".
+
+-----
+
+This was historically the first program that was supposed to be able to talk to the
+servers and it had a tremendously difficult time doing so.  Here are some obsolete
+instructions, just in case:
+
+"Ensure that cyassl is installed with keygen and certgen enabled and run
+sudo ldconfig after installation.
+
+"Use the credentials of this admin user to add another admin user using UserCreate.
+You may need to comment lines 145-154 of DataAccessor.java in TrustedServer.
+Now this newly created admin user will have proper keys and certificates generated.
+Uncomment the lines 145-154 of DataAccessor.java and run the trusted server again.
+Now, use UserCreate with the credentials of the newly created admin to create new
+users. By default all users will have the same password - provenance.
+
+"In UserCreate.cpp, change the variable path to be the location of ca-cert.pem which should
+be among the Resource Files."
+
+-----
+
+Much of the difficulty had to do with legacy SSL certificates that were expired or
+not able to work with each other, especially with client validation on the server side.
+The task of generating the certificates now falls to the KeyStore generator on the
+server/Java side.  In addition, there are now test programs which ping the servers,
+pingTrustedTest and pingProvenanceTest.  Look to the README files of those projects
+for more information about old SSL certificates.

@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/helloWorld/README#1 $
+
+The source file was probably copied from an Eclipse CDT example project.
+The project is intended to show that Eclipse is properly configured to process
+C++ projects.  This means that Eclipse, the C/C++ Development Tooling (CDT),
+and the appropriate toolchain (gcc-c++) are installed and working together,
+at least if you are not developing under Windows.  For that, this will just
+confirm that Visual C++ is up and running.  You wouldn't have gotten this
+far if not.

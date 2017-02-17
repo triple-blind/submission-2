@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/haathi/src/pkg/Addons.xcu#1 $-->
+<oor:component-data
+		oor:name="Addons"
+		oor:package="org.openoffice.Office"
+		xmlns:oor="http://openoffice.org/2001/registry"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<node oor:name="AddonUI">
+		<node oor:name="OfficeMenuBar">
+			<node oor:name="vnd.com.provenance.haathi" oor:op="replace">
+				<prop oor:name="Title" oor:type="xs:string">
+					<!-- No title for unknown language -->
+					<value/>
+					<!-- A tilde marks the preferred shortcut key -->
+					<value xml:lang="en">~Provenance</value>
+				</prop>
+				<prop oor:name="Target" oor:type="xs:string">
+					<value>_self</value>
+				</prop>
+				<prop oor:name="ImageIdentifier" oor:type="xs:string">
+					<!-- We don't have any pictures -->
+					<value/>
+				</prop>
+				<prop oor:name="Context" oor:type="xs:string">
+					<!-- Work only with text documents for now -->
+					<!-- Don't specify context so that menu is always visible for opening documents. -->
+					<!--value>com.sun.star.text.TextDocument</value-->
+				</prop>
+				<prop oor:name="URL" oor:type="xs:string">
+					<value>vnd.com.provenance.haathi:main</value>
+				</prop>
+				<node oor:name="Submenu">
+
+					<!--
+
+          | A~bout...   |
+					| Login... ~> |
+					|=============|
+					| ~New...     |
+					| ~Open...    |
+					|=============|
+					| ~Share...   |
+					| ~History... |
+					| E~xploit    | // Temporary
+					| ~Watermark  | // Temporary
+					|=============|
+					| ~Audit...   |
+					| ~Transcript |
+					|=============|
+					| Logou~t ~<  |
+					
+					-->
+					
+					<!-- Names determine the sort order of menu items,
+					so no attempt has been made to create useful names. -->
+          <node oor:name="n02" oor:op="replace">
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.com.provenance.haathi:about</value>
+            </prop>
+            <!-- We are not using images, so this property is not
+						included in the following nodes. -->
+            <!--prop oor:name="ImageIdentifier" oor:type="xs:string">
+							<value/>
+						</prop-->
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+            <!-- Context is decided above, so this property is not
+						included in the following nodes. -->
+            <!--prop oor:name="Context" oor:type="xs:string">
+							<value/>
+						</prop-->
+            <prop oor:name="Title" oor:type="xs:string">
+              <value/>
+              <value xml:lang="en">A~bout...</value>
+            </prop>
+          </node>
+
+          <node oor:name="n03" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:login</value>
+						</prop>
+						<!-- We are not using images, so this property is not
+						included in the following nodes. -->
+						<!--prop oor:name="ImageIdentifier" oor:type="xs:string">
+							<value/>
+						</prop-->
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<!-- Context is decided above, so this property is not
+						included in the following nodes. -->
+						<!--prop oor:name="Context" oor:type="xs:string">
+							<value/>
+						</prop-->
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">Login... ~&gt;</value>
+						</prop>
+					</node>
+					
+					<node oor:name="n04" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>private:separator</value>
+						</prop>
+					</node>
+					
+					<node oor:name="n05" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:new</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~New...</value>
+						</prop>
+					</node>
+					
+					<node oor:name="n06" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:open</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~Open...</value>
+						</prop>
+					</node>
+					
+					<node oor:name="n07" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>private:separator</value>
+						</prop>
+					</node>
+
+					<node oor:name="n08" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:share</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~Share...</value>
+						</prop>
+					</node>
+
+					<node oor:name="n09" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:history</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~History...</value>
+						</prop>
+					</node>
+
+          <node oor:name="n10" oor:op="replace">
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.com.provenance.haathi:exploit</value>
+            </prop>
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+            <prop oor:name="Title" oor:type="xs:string">
+              <value/>
+              <value xml:lang="en">E~xploit</value>
+            </prop>
+          </node>
+
+          <node oor:name="n10" oor:op="replace">
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.com.provenance.haathi:watermark</value>
+            </prop>
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+            <prop oor:name="Title" oor:type="xs:string">
+              <value/>
+              <value xml:lang="en">~Watermark</value>
+            </prop>
+          </node>
+
+          <node oor:name="n11" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>private:separator</value>
+						</prop>
+					</node>
+
+					<node oor:name="n12" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:audit</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~Audit...</value>
+						</prop>
+					</node>
+
+					<node oor:name="n13" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:showlogger</value>
+						</prop>
+						<prop oor:name="ImageIdentifier" oor:type="xs:string">
+							<value/>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Context" oor:type="xs:string">
+							<value/>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">~Transcript</value>
+						</prop>
+					</node>
+
+					<node oor:name="n14" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>private:separator</value>
+						</prop>
+					</node>
+					
+					<node oor:name="n15" oor:op="replace">
+						<prop oor:name="URL" oor:type="xs:string">
+							<value>vnd.com.provenance.haathi:logout</value>
+						</prop>
+						<prop oor:name="Target" oor:type="xs:string">
+							<value>_self</value>
+						</prop>
+						<prop oor:name="Title" oor:type="xs:string">
+							<value/>
+							<value xml:lang="en">Logout ~&lt;</value>
+						</prop>
+					</node>
+
+				</node>
+			</node>
+		</node>
+	</node>
+</oor:component-data>

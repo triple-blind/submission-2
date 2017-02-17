@@ -1,0 +1,7 @@
+Author: Aaron Gibson and Nitin Shinde
+
+
+This extension will allow for creating Provenance-enabled documents with multiple editors and collaborators, while storing the provenance securely on the cloud.
+
+Currently, only "Writer" (text) documents are supported, but more types will be added later.
+See the "Help" menu to understand how to use this extension.

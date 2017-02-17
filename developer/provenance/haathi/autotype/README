@@ -1,0 +1,28 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/autotype/README#1 $
+
+This program can be used to time several different Haathi operations: automatically
+type a new document, load a document as if it previously existed, and save a
+document.  The documents in question are expected to be text documents stored on
+the local file system.  Their contents will either be typed one character at a
+time and be subject to Provenance events and watermarking at that scale, or
+loaded fully formed into the document and recorded as a Provenance open event
+before watermarking works on the document as a whole.
+
+The command line parameters are described in the syntax error message.  This
+program links against haathi-2-lib and the two programs should be configured
+with the same settings for Provenance and Watermarking being on or off.
+This means, in effect, that there needs to be several versions of this program:
+autotypeP1W0, autotypeP0W0, and autotypeP1W1.  This is due to some of the
+settings being decided at compile time.
+
+The extension does not been to be installed into OpenOffice in order to use this
+program, since the code is linked in.  However, for syntax watermarking, the
+dictionary that needs to be used is read from the installed extension's location.
+So, if there is no extension, there's no dictionary and the watermarking is not
+particularly effective.
+
+There is currently a problem which prevents the automatic typing of Provenance-
+enabled documents.  A query was put to the api mailing list and a bug report may
+be filed if that doesn't turn up a solution.
+
+This is a work in progress, so these comments are probably out of date.

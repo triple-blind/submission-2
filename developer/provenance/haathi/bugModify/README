@@ -1,0 +1,7 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/bugModify/README#1 $
+
+The autotype project identified several problems with the usually
+interactive Haathi.  In particular, when the modify event is broadcase, there
+seems to be a problem with checking the current selection.  This code was written
+to be the smallest stand-alone example of the problem and was reported to the
+API mailing list.

@@ -1,0 +1,12 @@
+For Linux, first install eclipse from the eclipse download site.  Eclipse is
+dependent upon Java, which is probably pre-installed, but Eclipse will hopefully
+offer to install Java for you if not.  Once eclipse is running properly, check
+under the (probably) Help menu and find Install New Software...  Choose
+a site, possibly all available sites, look under Programming Languages,
+select the C/C++ Development Tools, and proceed with the installation.  Before
+you can compile properly, it is likely that a toolchain needs to be installed.
+How this works is dependent on the Linux distribution, package manager, etc.
+A command like "sudo yum install gcc-c++" might do the trick.
+
+For Macintosh it migh (... something appears to have gone missing here...), first
+install eclipse from the eclipse download site.

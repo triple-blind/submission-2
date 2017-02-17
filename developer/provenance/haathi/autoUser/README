@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/autoPdf/README#1 $
+
+In order to test the watermark recovery in a repeatible way, several
+processes must be automated.  One is the conversion of a watermarked document
+into an image.  In this first step of the process, a document is automatically
+loaded from a plain text file, watermarked, and then exported as a PDF.  Other
+programs are responsible for converting the PDF further into a graphic.  This
+program also records the text of the document and the watermark bits actually
+inserted so that an evaluation can be performed on watermark recovery.

@@ -1,0 +1,50 @@
+# This file should help make cleaning the project optional for _backup_.
+# The master and development branches should still be cleaned!
+
+# General
+*/metadata.zip
+
+# For Windows haathi
+haathi/**/*.pdb
+haathi/*.ncb
+haathi/*.suo
+haathi/**/*.vcproj.*.*.user
+
+haathi/**/Debug-DynLink/
+haathi/**/Debug-StatLink/
+haathi/**/Release-DynLink/
+haathi/**/Release-StatLink/
+haathi/**/Debug/
+haathi/**/Release/
+
+haathi/.metadata/
+haathi/doc/
+!haathi/doc/.gitempty
+haathi/inc/com/
+haathi/inc/haathi/
+haathi/log/*.htm
+haathi/reg/*.urd
+haathi/reg/*.uno.tmp
+haathi/reg/*.uno.rdb
+haathi/run/*.bat
+
+# For Non-Windows haathi
+
+# haathi4j
+haathi4j/**/bin/
+haathi4j/.metadata/
+haathi4j/.recommenders/
+
+# For servers
+servers/**/bin/
+servers/.metadata/
+servers/db/*.db
+servers/doc/
+!servers/doc/.gitempty
+servers/DeployComboServer/ComboServer.*
+servers/DeployList/List.*
+servers/DeployNewUser/NewUser.*
+servers/ProvenanceLocalSQLiteDataAccessorTest/*.db
+servers/SQLiteTest/*.db
+servers/TrustedLocalSQLiteDataAccessorTest/*.db
+servers/TrustedServer/*.db

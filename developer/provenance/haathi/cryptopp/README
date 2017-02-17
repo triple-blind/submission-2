@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cryptopp/README#1 $
+
+Cryptopp provides cryptographic services.  The Windows version is compiled
+from source code while non-Windows versions are built from a makefile which
+configures the regular cryptopp (GNUmakefile), slightly edited.  This was
+necessary because the cryptopp source directory includes assembly language files.
+These aren't necessary for the library, but Eclipse tries to compile everything
+in a directory and the easiest way to exclude the assembly language was to let
+the makefile sort it out.  VC++ lets one specify individual files, so the
+assembly could be avoided that way.  The file list was extracted from one of
+the Visual Studio projects included with the source code.  Haathi uses only
+a very small portion of this library.

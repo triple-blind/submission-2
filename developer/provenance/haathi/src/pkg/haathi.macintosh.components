@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns="http://openoffice.org/2010/uno-components">
+<!--
+  <component loader="com.sun.star.loader.SharedLibrary" uri="Windows_x86/haathi.uno.dll">
+    <implementation name="vnd.com.provenance.haathi.Impl.ProtocolHandler">
+      <service name="vnd.com.provenance.haathi.ProtocolHandler"/>
+    </implementation>
+  </component>
+-->
+  <component loader="com.sun.star.loader.SharedLibrary" uri="MacOSX_x86/haathi.uno.dylib">
+    <implementation name="vnd.com.provenance.haathi.Impl.ProtocolHandler">
+      <service name="vnd.com.provenance.haathi.ProtocolHandler"/>
+    </implementation>
+  </component>
+<!--
+  <component loader="com.sun.star.loader.SharedLibrary" uri="Linux_x86_64/haathi.uno.so">
+    <implementation name="vnd.com.provenance.haathi.Impl.ProtocolHandler">
+      <service name="vnd.com.provenance.haathi.ProtocolHandler"/>
+    </implementation>
+  </component>
+-->
+</components>

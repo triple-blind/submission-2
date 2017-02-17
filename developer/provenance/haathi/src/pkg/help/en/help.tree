@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<tree_view version="24-Aug-2004">
+	<help_section application="provenance" id="foo01" title="Provenance">
+		<topic id="provenance/com.provenance.extensions.haathi/Main.xhp">Introduction</topic>
+    <topic id="provenance/com.provenance.extensions.haathi/About.xhp">About</topic>
+    <topic id="provenance/com.provenance.extensions.haathi/Login.xhp">Login</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/New.xhp">New</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/Open.xhp">Open</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/Share.xhp">Share</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/History.xhp">History</topic>
+    <topic id="provenance/com.provenance.extensions.haathi/Exploit.xhp">Exploit</topic>
+    <topic id="provenance/com.provenance.extensions.haathi/Audit.xhp">Audit</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/Transcript.xhp">Transcript</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/Logout.xhp">Logout</topic>
+		<topic id="provenance/com.provenance.extensions.haathi/Auditor.xhp">Auditor</topic>
+	</help_section>
+</tree_view>

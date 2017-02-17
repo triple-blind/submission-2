@@ -1,0 +1,15 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/traitorTracer/README#1 $
+
+The main program in this project, TraitorTracer.cpp, appears to be a work
+in progress.  It's goal seems to be to track down who might have tampered
+with the image in a document.  It's does not seem obvious how it goes
+about it.  Because of the mystery, the original Makefile is included as
+well as an image and these notes:
+
+"First convert the PDF to an image as follows :
+
+$ convert -density 400 -quality 400 wmk.pdf img.jpg
+
+If the PDF contains more than one page, you will get more than one image like img-0,img-1 etc.
+
+Then, run make to compile and use make run to run the traitor tracer."

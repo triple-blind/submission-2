@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<option id="gnu.cpp.compiler.option.include.paths.867673977" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+	${workspace_loc}/src/lib
+	${workspace_loc}/cJSON
+	${workspace_loc}/../libcpp/boost/NonWindows/include
+	${workspace_loc}/../libcpp/cyassl
+	${workspace_loc}/../libcpp
+	${workspace_loc}/sdk/Linux/include
+	${workspace_loc}/inc
+</option>
+<option id="gnu.cpp.compiler.option.preprocessor.def.1433798191" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+	UNX
+	OFFICE=OFFICE_OPEN
+	GCC
+	LINUX
+	CPPU_ENV=gcc3
+	HAVE_GCC_VISIBILITY_FEATURE
+</option>
+<option id="gnu.cpp.link.option.userobjs.1617594486" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+	${workspace_loc}/lib/Debug/libhaathi.a
+
+	${workspace_loc}/haathi-2-lib/Debug/libhaathi-2-lib.a
+	${workspace_loc}/cJSON/Debug/libcJSON.a
+	${workspace_loc}/cyassl/Debug/libcyassl.a
+	${workspace_loc}/cryptopp/Default/libcryptopp.a
+</option>
+<option id="gnu.cpp.link.option.paths.1880526174" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+	<listOptionValue builtIn="false" value="&quot;${workspace_loc}/sdk/Linux/lib&quot;"/>
+</option>
+<option id="gnu.cpp.link.option.libs.358416277" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+	<listOptionValue builtIn="false" value=":libuno_cppu.so.3"/>
+	<listOptionValue builtIn="false" value=":libuno_salhelpergcc3.so.3"/>
+	<listOptionValue builtIn="false" value=":libuno_sal.so.3"/>
+	<listOptionValue builtIn="false" value=":libuno_cppuhelpergcc3.so.3"/>
+</option>
+

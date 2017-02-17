@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+	<meta>
+		<topic indexer="include" status="PUBLISH">
+			<title xml-lang="en-US">Provenance - Audit</title>
+			<filename>/com.provenance.extensions.haathi/Audit.xhp</filename>
+		</topic>
+	</meta>
+	<body>
+		<!-- Table of contents entry -->
+		<bookmark id="contents" xml-lang="en-US" branch="contents">
+			<bookmark_value>Provenance/Audit</bookmark_value>
+		</bookmark>
+
+		<!-- Index entry -->
+		<bookmark id="index" xml-lang="en-US" branch="index">
+			<bookmark_value>Provenance;Audit</bookmark_value>
+		</bookmark>
+		
+		<!-- F1 link at dialog level -->
+		<bookmark id="f1" xml-lang="en-US" branch="hid/vnd.com.provenance.haathi:audit"/>
+		
+		<!-- Tooltip for menu item -->
+		<paragraph xml-lang="en-US" role="paragraph">
+			<ahelp hid="vnd.com.provenance.haathi:audit" visibility="hidden">Audit (show individual Provenance events from) a Provenance-enabled document.</ahelp>
+		</paragraph>
+
+		<!-- Page header -->
+		<paragraph xml-lang="en-US" role="heading" level="1">Provenance - Audit</paragraph>
+
+		<!-- Dialog image -->
+		<image src="com.provenance.extensions.haathi/Audit.png"></image>
+
+		<!-- Overview -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Overview</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<!-- Controls -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Existing documents</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">First</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Last</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Email</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Created</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Modified</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Version</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">History...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">OK</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Cancel</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+	</body>
+</helpdocument>

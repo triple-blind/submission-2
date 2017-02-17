@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-4-oxt/README#1 $
+
+The fourth set to building Haathi is to collect the executable component
+and also a number of resources (help files, images, license files,
+configuration files, etc.) and zip them all up into an *.oxt file.
+It's just a renamed zip file.  Those resource files should be accessible
+from this project for potential editing.  All the copying, renaming, and
+zipping is coordinated by a makefile.  A fixed directory stucture, that
+suggested by the SDK is used.  There are fixed places for certain kinds
+of files, so stick to that structure.

@@ -1,0 +1,6 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/autoPdf/README#1 $
+
+This program is used to generate random numbers in the same way that
+Haathi does.  It produces a record of the numbers that can be used in traitor
+tracing.  The Java PrecisionMeter uses it to judge whether there is a hit (a
+positive) when evaluating extracted watermarks.

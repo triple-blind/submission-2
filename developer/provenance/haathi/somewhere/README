@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/somewhere/README#1 $
+
+This is a Monte Carlo simulation of the SomewhereEngine algorithm that writes
+a watermark at a random position in the document in order to ensure that there
+is at least one complete mark present.  How efficient is the algorithm.  With
+a document size of 1024 characters and a watermark "size" of 32 characters,
+32 complete watermarks can be inserted at the most.  How many on average will
+be complete.  It looks like around half of them.  This is more than I expected
+and I am pleased with the finding.

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+	<meta>
+		<topic indexer="include" status="PUBLISH">
+			<title xml-lang="en-US">Provenance - Login</title>
+			<filename>/com.provenance.extensions.haathi/Login.xhp</filename>
+		</topic>
+	</meta>
+	<body>
+		<!-- Table of contents entry -->
+		<bookmark id="contents" xml-lang="en-US" branch="contents">
+			<bookmark_value>Provenance/Login</bookmark_value>
+		</bookmark>
+
+		<!-- Index entry -->
+		<bookmark id="index" xml-lang="en-US" branch="index">
+			<bookmark_value>Provenance;Login</bookmark_value>
+		</bookmark>
+		
+		<!-- F1 link at dialog level -->
+		<bookmark id="f1" xml-lang="en-US" branch="hid/vnd.com.provenance.haathi:login"/>
+		
+		<!-- Tooltip for menu item -->
+		<paragraph xml-lang="en-US" role="paragraph">
+			<ahelp hid="vnd.com.provenance.haathi:login" visibility="hidden">You will have to login before accessing the Provenance system.</ahelp>
+		</paragraph>
+
+		<!-- Page header -->
+		<paragraph xml-lang="en-US" role="heading" level="1">Provenance - Login</paragraph>
+
+		<!-- Dialog image -->
+		<image src="com.provenance.extensions.haathi/Login.png"></image>
+
+		<!-- Overview -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Overview</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			The Provenance system requires user authentication for all operations.
+			If a Provenance operation is initiated while the user is not logged in, this dialog
+			appears before the operation commences.  There is a matching logout menu item that
+			shows the name, first and last, of the Provenance user and which will cause the
+			system to revert to the unauthenticated state.
+		</paragraph>
+
+		<!-- Controls -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Email</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Enter the email address used for your Provenance account.
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Password</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Test server</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			<image src="com.provenance.extensions.haathi/TestServerSuccess.png"></image>
+		</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			<image src="com.provenance.extensions.haathi/TestServerFailure.png"></image>
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">OK</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Cancel</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+	</body>
+</helpdocument>

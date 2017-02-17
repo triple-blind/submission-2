@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/tesseractTest/README#1 $
+
+This test starts up tesseract, checks the version number, and
+attempts to initialize the system.  This initialization will
+fail if tesseract can't find its training data for the language,
+presently English (eng).  The training data is expected in a
+certain directory, a subdirectory of libcpp/tesseract.  Therefore,
+the startup directory for the test has to be set to that very
+tesseract directory.

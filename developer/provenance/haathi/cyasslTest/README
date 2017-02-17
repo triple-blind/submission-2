@@ -1,0 +1,7 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cyasslTest/README#1 $
+
+This tests whether the CyaSSL library can be linked (i.e., the build-time
+conditions have been met) and whether it runs (i.e., the run-time conditions
+have been met).  It doesn't actually do any networking.  It shouldn't require
+any changes to firewalls.  For actual communications, see the cyasslClientTest
+and cyasslServerTest projects.

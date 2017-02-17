@@ -1,0 +1,58 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cyasslClientTest/README#1 $
+
+The two README files for cyasslServerTest and cyasslClientTest are
+almost exactly the same except that Server and Client are swapped
+where appropriate.
+
+This project includes code from a CyaSSL sample program that exercises
+a client connection and then some test framework files.  It works in
+tandem with cyasslServerTest, which is responsible for the server
+side, logically.  The test is simply whether a request and response
+can be successfully transmitted over the network.  This will only 
+work correctly if the firewall is configured properly and certificates
+are lined up (and nothing like TeamViewer has somehow messed up Windows
+networking).  To use the predefined CyaSSL certificates, start the program
+in the libcpp/cyassl directory.  The project should be configured to do this.  
+
+Visual C++ does not support debugging two applications at once, so it is
+necessary to start up the cyasslServerTest from elsewhere, such as a separate
+instance of Visual C++ or from the command line.  Start the server and then
+the client and note whether they both announce passing the test.  Eclipse
+can run both test programs at the same time and provides separate consoles
+where the output should appear.
+
+If there are problems, double check the firewall settings.  The TrustedServer
+defaults to port 9987 and the ProvenanceServer to 9988, so check whether these
+work first.  The project settings are configured to use -p 9987.  They are
+also configured to start the program in the main cyassl library directory,
+$(ProjectDir)..\..\libcpp\cyassl where the default certificates are installed.
+You can change the directory and the names of the certificate files by passing
+in other command line parameters.  See cyasslClientMain.cpp for details or run
+the program with -? for help.
+
+To use the default certificates, the command line for either server and client
+would look something like this:
+
+cd $(ProjectDir)..\..\libcpp\cyassl
+..\..\haathi\cyasslServerTest\$(ConfigurationName)\cyasslServerTest.exe -p 9987
+..\..\haathi\cyasslClientTest\$(ConfigurationName)\cyasslClientTest.exe -p 9987
+
+Start the server first and then the client for best results.
+
+To use the Provenance certificates, additional parameters need to be specified
+and the programs can be started up in the keystore directory:
+
+cd $(ProjectDir)..\..\server\keystore
+..\..\haathi\cyasslServerTest\$(ConfigurationName)\cyasslServerTest.exe -p 9987
+	-k trusted-key.pem -c trusted-cert.pem -A ca-cert.pem
+..\..\haathi\cyasslClientTest\$(ConfigurationName)\cyasslClientTest.exe -p 9987 \
+	-k haathi-key.pem -c haathi-cert.pem -A ca-cert.pem
+
+The trusted-key.pem and provenance-key.pem files are not needed for the Java
+servers, since they use *.jks files.  They key files can be generated from
+the *.jks files using the PrivateKeyExtractor Java project.  Do this if you
+want to test the Trusted/Provenance-Haathi communication completely from the
+C++ side.
+
+Note: It seems that TeamViewer somehow messes up Windows networking, or at least CyaSSL.
+If you have used TeamViewer since logging on, you probably want to log off and back on.

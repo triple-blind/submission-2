@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/watermarkBitExtractor/README#3 $
+
+After a text document has been watermarked, converted to PDF, and then transformed into a
+JPG, this program will (try to) extract the watermarks.  It could easily be modified to
+work on other graphics formats.  It relies on tesseract for OCR and tesseract in turn
+relies on leptonica for knowledge of graphics formats.  So, if leptonica can figure out
+the format, then bits can be extracted.
+
+This program is also automatically run by the WatermarkBitAnalyzer in the haathi4j
+directory.  That program is in turn run by several others to analyze and meter the
+accuracy, precision, etc. of the watermarking process.

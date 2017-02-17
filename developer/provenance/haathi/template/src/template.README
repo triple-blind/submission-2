@@ -1,0 +1,100 @@
+Use the makefile (or Visual Studio project) to compile and run UserCreate.  This is a useful
+tool for creating new users.
+ 
+Initially with an empty user table [within the SQLite database provenance.db in
+TrustedServer\keystore or thereabouts], insert a row manually with keys and certificates
+set as empty strings and give that user admin (3) privileges.  User types are defined
+in packet.h:
+
+enum UserType {
+	USER = 1, AUDITOR = 2, ADMINISTRATOR = 3
+};
+
+and in UserType.java:
+
+ProvenanceUser(1), ProvenanceAuditor(2), Administrator(3), Unknown(99);
+
+
+Ensure that cyassl is installed with keygen and
+certgen enabled and run sudo ldconfig [what does that have to do with anything?] after installation.
+
+# Need initialization server in which this is not required
+
+Use the credentials of this admin user to add another admin user using UserCreate.
+You may need to comment lines 145-154 of DataAccessor.java in TrustedServer.
+Now this newly created admin user will have proper keys and certificates generated.
+Uncomment the lines 145-154 of DataAccessor.java and run the trusted server again.
+Now, use UserCreate with the credentials of the newly
+created admin to create new users. By default all users will have the same password - provenance.
+
+In UserCreate.cpp, change the variable path to be the location of ca-cert.pem which should
+be among the Resource Files.
+
+
+To make keystore files, use keytool with java distribution
+
+keytool -genkey -keystore keith.jks -alias keith -keyalg RSA -storepass xxx -validity 360 -keysize 1024
+keytool -exportcert -keystore keith.jks -alias keith -file keith.pem -rfc
+
+How does the private part get into the DB?
+
+Now what to do with them.
+
+To inspect the keystore, use
+
+keytool -list -v -keystore <file>
+
+file: plain\ca.jks
+pwd: rootpw
+alias: root
+valid: Mar 2, 2012 - Jul 16, 2013
+EXPIRED!
+
+file: new\ca_new.jks <- using this one as .\ca.jks
+pwd: rootpw
+alias: haathi
+valid: May 15, 2013 - May 15, 2017
+GOOD!
+
+Rename this simply ca.jks and use, need to generate certificate from it?
+
+file: new\ts_new.jks <- using this one as .\ts.jks
+pwd: trusted
+alias: trustedserver
+valid: May 15,2013 - May 15, 2017
+GOOD!
+
+file: new\trusted_new.jks
+pwd: trusted
+alias: trustedserver
+valid: Apr 16, 2012 - Jan 12, 2015
+GOOD!
+
+file: new\trusted_new
+INVALID KEYSTORE FORMAT!
+
+file: old\trusted_old.jks
+pwd: trusted
+alias: trustedserver
+valid: Mar 2, 2012 - Nov 28, 2014
+GOOD!
+
+file: plain\trusted.jks
+pwd: trusted
+alias: trustedserver
+valid: Mar 15, 2012 - Apr 14, 2012
+EXPIRED!
+
+file: plain\ts.ks
+pwd: ?
+
+file: plain\trustedserver_ks
+pwd: trustedserverpwd
+alias: trustedserver
+valid: Jan 13, 2012 - Oct 10, 2014
+GOOD!
+
+
+Need pem file for client such as userCreate
+
+keytool -exportcert -keystore ca.jks -alias haathi -file ca-cert.pem -rfc

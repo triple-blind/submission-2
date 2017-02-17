@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/serializationTest/README#1 $
+
+This project tests the serialization of OpenOffice classes.  It is similar
+to boostTest then except for the addition of the Haathi library dependency.
+Because of this, it must have access to certain DLLs during runtime and
+that should be configured in the project.  For Windows the DLLs are
+automatically copied to the target directory.  For other operating
+systems, the environment variables LD_LIBRARY_PATH or DYLD_LIBRARY_PATH
+are changed so that the necessary *.so or *.dylib files can be found.
+This is the strategy taken for all the programs dependent upon the
+Haathi library.

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+	<meta>
+		<topic indexer="include" status="PUBLISH">
+			<title xml-lang="en-US">Provenance - About</title>
+			<filename>/com.provenance.extensions.haathi/About.xhp</filename>
+		</topic>
+	</meta>
+	<body>
+		<!-- Table of contents entry -->
+		<bookmark id="contents" xml-lang="en-US" branch="contents">
+			<bookmark_value>Provenance/About</bookmark_value>
+		</bookmark>
+
+		<!-- Index entry -->
+		<bookmark id="index" xml-lang="en-US" branch="index">
+			<bookmark_value>Provenance;About</bookmark_value>
+		</bookmark>
+		
+		<!-- F1 link at dialog level -->
+		<bookmark id="f1" xml-lang="en-US" branch="hid/vnd.com.provenance.haathi:about"/>
+		
+		<!-- Tooltip for menu item -->
+		<paragraph xml-lang="en-US" role="paragraph">
+			<ahelp hid="vnd.com.provenance.haathi:about" visibility="hidden">This extension is used for &quot;Provenance-Enabled&quot; documents.</ahelp>
+		</paragraph>
+
+		<!-- Page header -->
+		<paragraph xml-lang="en-US" role="heading" level="1">Provenance - About</paragraph>
+
+		<!-- Dialog image -->
+		<image src="com.provenance.extensions.haathi/About.png"></image>
+
+		<!-- Overview -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Overview</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<!-- Controls -->
+		<paragraph xml-lang="en-US" role="heading" level="2">About pane</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">Close</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+	</body>
+</helpdocument>

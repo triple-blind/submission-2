@@ -1,0 +1,15 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/complextoolbarcontrols/README#1 $
+
+The files of this project all originate from an OpenOffice SDK example
+which adds a fancy toolbar to the UI.  The example used approximately
+five different makefiles and a configuration program to do its work.
+It also needed a Unix environment installed under Windows (and didn't
+seem to work anyway).  In addition, the directory structure was not
+amenable to extension.  This is a complete redesign of the build process
+in one small package.  For Haathi, the process is divided into five
+different stages so that intermediate results can be reused and to
+shorten some stages that are likely to be repeated.  In any case,
+a complete extension is built and possibly even installed in one
+straightforward process.  This project, by the way, can also be used
+to host parts of Haathi for debugging.  There is presently a test
+of getPathToExtensionRoot() incorporated.

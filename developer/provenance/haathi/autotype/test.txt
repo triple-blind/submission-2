@@ -1,0 +1,10 @@
+So that the executable can find all the right OpenOffice DLLs when it starts up
+without requiring a path change, the startup directory can be set to something like
+
+C:\Program Files (x86)\OpenOffice 4\program
+
+Keep that in mind when specifying the file to use, because it may not be in the
+updated current directory.
+
+Try "$(ProjectDir)autotype.README" to use this very file.  Don't forget the quotes
+or the command line will be misinterpreted.

@@ -1,0 +1,404 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/README/README#5 $
+
+Welcome to the Haathi solution or workspace, depending on whether you are
+visiting from a Microsoft Visual C++ or Eclipse perspective.  This collection
+of projects will help you further develop the Haathi extension for OpenOffice.
+
+Here are brief summaries of the included projects so that you can figure out
+where to start.  These projects are more or less one to a directory with
+the exception of directories bin, dll, doc, doxygen, exe, inc, lib, log, oxt, pkg, reg,
+run, sdk, src, zip, and template, which are explained afterwards.  The summaries
+are sorted in alphabetical order for ease of access.  However, it is better to
+approach them in an order that ensures all prerequisite projects are first
+visited.  For more details about project dependencies, see the document
+ProjectDependencies.odg that is part of this project.  Some projects also
+require that Java components are built first.  This is the recommended processing
+order:
+
+	README
+	helloWorld
+	cJSON cJSONTest
+	cryptopp cryptoppTest somewhere
+	cyassl cyasslTest cyasslSocketTest cyasslServerTest cyasslClientTest 
+	boost boostTest
+	catch catchTest (both optional, for testing)
+
+	[complextoolbarcontrols]
+	haathi-1-idl
+	haathi-2-lib serializationTest bugTest defaultCertificates pingTrustedTest pingProvenanceTest
+		watermarkTest
+	haathi-3-dll haathi-4-oxt haathi-5-run
+	userCreate bugModify
+	autoLib autotype autoPdf autoRnd
+
+	leptonica leptonicaTest
+	tesseract tesseractTest
+	dependencyTest
+	watermarkBitExtractor
+	traitorTracer
+
+	haathi-6-zip
+
+autoLib - This project contains shared code for the autoPdf, autoRnd, and
+autotype projects, among others.
+
+autotype - The program this project generates can be used to time several
+different Haathi operations in which a document needs to be automatically
+loaded or typed.  All necessary options can be specified on the command line
+so that no mouse or keyboard input is required and tests can be run in
+batch mode.
+
+autoPdf - In order to test the watermark recovery in a repeatible way, several
+processes must be automated.  One is the conversion of a watermarked document
+into an image.  In this first step of the process, a document is automatically
+loaded from a plain text file, watermarked, and then exported as a PDF.  Other
+programs are responsible for converting the PDF further into a graphic.  This
+program also records the text of the document and the watermark bits actually
+inserted so that an evaluation can be performed on watermark recovery.
+
+autoRnd - This program is used to generate random numbers in the same way that
+Haathi does.  It produces a record of the numbers that can be used in traitor
+tracing.  The Java PrecisionMeter uses it to judge whether there is a hit (a
+positive) when evaluating extracted watermarks.
+
+boost - Boost provides serialization for C++ objects that track manipulations of the
+OpenOffice document being edited.  Most of the functionality is templated and
+contained in include files, but a library is also used.  For Windows, pre-built
+libraries are used, but for Linux and Macintosh, the static library is built.
+
+boostTest - A very simple test of boost functionality is performed with this project.
+Boost is included as a dylib/so file with some operating systems and this might help
+ensure that the static library is being linked to Haathi.
+
+bugModify - The autotype project identified several problems with the usually
+interactive Haathi.  In particular, when the modify event is broadcase, there
+seems to be a problem with checking the current selection.  This code was written
+to be the smallest stand-alone example of the problem and was reported to the
+API mailing list.
+
+bugTest - The Haathi code included a few bugs and this project is intended to
+ensure that they don't reappear and that the fixes work for all target platforms.
+
+catch - Catch is being used as the (new) unit testing framework.  Not all projects have
+been changed to use it, but updated and future tests do and should use it.  This projects
+provides some tweaks to the functionality so that it works better with Visual Studio.
+
+catchTest - This both tests catch itself and demonstrates how to use it.  This project
+can be copied in order to start other unit test projects.
+
+cJSON - Haathi has four prerequisites and this is the simplest.  It is one source and
+one include file plus one include file for compatibility.  The source is compiled into
+a library for reuse and the include file must be added to dependent projects.
+
+cJSONTest - This is a very simple dependent of cJSON that checks whether its functions
+can be called and that the linker is therefore working with the library.
+
+complextoolbarcontrols - This project includes the source code to an OpenOffice SDK
+example application that is build by a makefile that accesses parts of the SDK as
+well as files that are delivered with the OpenOffice application.  If this project
+can be built and installed, and the resulting extension works in OpenOffice, then there
+is a reasonably chance that Haathi can as well.  On the other hand it can be considered
+[optional] and it isn't otherwise involved with Haathi.
+
+cryptopp - This provides cryptographic services.  The Windows version is compiled
+from source code while the Linux/Mac version is build from a makefile that controls
+the regular cryptopp makefile.  The result is a library used by other projects.
+A description of the protocol used can be found in the body-of-proposal.pdf
+document.
+
+cryptoppTest - A rudimentary test of cryptopp is provided with this project.  It ensures that
+the cryptopp routines can be linked and accessed.
+
+cyassl - A Secure Sockets Layer is used to connect Haathi to the Java servers.  The C++
+side is implemented in this library.  Settings must be coordinated with the ProvenanceServer
+and TrustedServer Java projects.  Furthermore, certificates need to be provided, configured,
+etc.  See in particular KeystoreGenerate and PrivateKeyExtractor for this.  The result is
+again a library that is accessed by other projects.
+
+cyasslClientTest - This project along with cyasslServerTest checks for end-to-end
+communication through the SSL channel, independently of any Haathi or server functionality.
+Its performance can be blocked by both firewalls and improperly configured certificates.
+Get this working before trying to debug the Haathi extension.
+
+cyasslServerTest - This is the server-side counterpart to cyasslClientTest to be used
+as an end-to-end check of the communications channel independently of Haathi.  Start up
+this server first and then run cyasslClientTest.  You should observe that they exchange
+a message.
+
+cyasslSocketTest - This project is intended to attempt the simplest communication between the
+C++ and Java components using the localhost and Trusted Server port.  It is independent
+of the Haathi code and doesn't send a ping message, but connects in the same way the
+extension does.
+
+cyasslTest - This is just a link check program that will only run if the cyassl library
+has been properly built.
+
+defaultCertificates - Haathi includes some preconfigured servers IP addresses, ports,
+and certificates which are, I guess for expediency, stored in a readable binary
+format courtesy of boost.  This project builds the configuration file.
+
+dependencyTest - Haathi presently requires four third-party components and two additional
+are required for TraitorTracer.  This project puts them all together to test compatibility,
+mostly whether the compiler and linker switches all match up.  For Windows, this is
+decidedly not the case as some Leptonica prerequisites are not suitable for static linking.
+Therefore, only dynamically linked versions of its dependents can be created.  For
+Linux, the available package seems to be dynamically linked as well, so the same
+restriction applies.
+
+haathi-1-idl - The first step in building the extension is to process all of the IDL
+code that comes with the OpenOffice SDK and add to it that which is part of Haathi.
+This project makes all that happen and produces all the include files that are needed
+for the rest of the project.
+
+haathi-2-lib - The vast majority of Haathi code gets compiled with this project which
+results in a library that is used not only for the installed extension, but also numerous
+ancillary projects.
+
+haathi-3-dll - A few glue files are included with this project which otherwise
+is used to provide access to the Haathi library built previously.  This is the
+final compilation stage and results with a file that can be dynamically loaded
+into a running OpenOffice component.
+
+haathi-4-oxt - The Haathi executable components must be packaged with several
+resources: help files, images, license files, configuration files, etc.
+On top of that, they must all be zipped up.  OpenOffice specifies a format
+for this and this project executes it.
+
+haathi-5-run - Extensions can be installed from the running instance of OpenOffice
+by using the Extension Manager.  However, they can also be installed in batch
+mode, assuming that OpenOffice is not already running.  This project installs
+Haathi and creates a batch file that can repeat the process outside of the
+development environment.
+
+haathi-6-zip - The zipped source code distribution is created with this project.
+Included is the HTML file (index.html) that provides links to the code, Haathi
+extensions, download sites, etc.  If you change a download, be sure to update
+this file.
+
+helloWorld - This project can be used to test your development environment and
+how well it understands these project files.  The Microsoft Visual C++ tools for
+Windows is a monolithic download and install.  If you are using Eclipse, you will
+need to additionally install CDT and a tool chain.  Test them now.
+
+leptonica - Leptonica is a library for image processing and analysis.  It is used
+in the traitorTracer to detect tampering of a document's images.  The Windows
+project just organizes DLLs.  The Linux project expects the Leptonica libraries
+to be installed with the system.  There seems to be no pre-compiled Macintosh version
+and the build of Leptonica plus its disparate prerequisites (gif, jpeg, png, tiff,
+and zlib libraries) is prohibitively expensive.  Please stick to Windows or Linux
+for this project and its dependents the time being.
+
+leptonicaTest - This exercises some very basic functionality to verify that the
+Leptonica libraries could be properly linked.
+
+pingProvenanceTest - This sends an actual PING command to the Provenance Server via
+Haathi in almost extactly the same way that the extension does.  That includes
+JSON command encoding, SSL encryption with certificates, and response processing.
+
+pingTrustedTest - This sends an actual PING command to the Trusted Server via
+Haathi in almost exactly the same way that the extension does.  That includes
+JSON command encoding, SSL encryption including the certificates, and response processing.
+
+README - This is the project you are presumably already viewing.  It contains this README file
+and other possibly helpful documents.
+
+serializationTest - This project ensures that certain Haathi structures can be
+serialized and deserialized via boost.  If these work, it is assumed that the rest
+are in order.
+
+somewhere - This is a little test to compute the efficiency of the SomewhereEngine.
+
+tesseract - Tesseract is an OCR engine that is used with the traitorTracer to detect
+tampering of a document's images.  As with Leptonica, pre-built components are expected.
+For Windows this means libraries (in the libcpp directory) and for Linux the packages
+should be installed with the operating system.  There is as yet no Macintosh version.
+
+tesseractTest - This is a basic check to ensure that Tesseract functionality is accessible.
+
+traitorTracer - This seems to be rough draft of a program intended to detect
+tampering of a document's images.  It is unclear to what extent it works.
+
+userCreate - The TrustedServer includes a database of valid Haathi users.  The program
+that results from this project can be used to add users to the database.  There is a
+similar project on the Java side, but this one proceeds through the C++ infrastructure.
+The extension itself does not appear to be configured to create users on its own.
+
+watermarkBitExtractor - After a text document has been watermarked, converted to PDF,
+and then transformed into a JPG, this program will (try to) extract the watermarks.
+It is related to autoPdf and pdftojpg.bat.  See the autoPdf project and its
+documentation for more details.
+
+watermarkTest - Low-level watermarking unit tests are implemented in this project.
+They make use of catch.
+
+
+Additional directories house components of the OpenOffice SDK or of the actual
+OpenOffice distribution.  In one case a third-party tool is included and there is one
+directory of template files and another of doxygen settings.  Others provide
+(preconfigured, structured) scratch space for the Haathi build and allow multiple
+projects to access intermediate output.
+
+bin - Here is a zip program for Windows that is fairly compatible with those preinstalled
+for Linux and Macintosh.
+
+doc - This directory houses the documentation generated by doxygen.
+
+doxygen - Settings and resources for the document generator are stored here.
+
+exe - The SDK makes use of several programs that are part of the OpenOffice distribution.
+Including them here makes the SDK independent and eases configuration.
+
+launches - Eclipse launch configurations are stored here so that they can be imported
+into a new Eclipse workspace.  This directory is now provided with a project file and
+can be imported with the rest of the projects.  Alternatively, from the main menu choose
+File | Import... | Run/Debug | Launch Configurations and press Next >.  Navigate to this
+directory in the next dialog and select the configurations.
+
+odt - OpenOffice text documents which include experimental macros are included here.
+Sometimes it is simpler to program a quick experiment in Basic than to integrate
+experimental code into Haathi.
+
+sdk - The SDKs for the various platforms live here.  However, they are highly pared down
+to reduce the size of the source distribution.
+
+template - It's difficult to keep projects and source files consistently configured and
+formatted, so there are template files here.  Similar files exist on the Java side.
+
+txt - Text documents that are used for testing are stored here.  They are stripped
+from formatting and special characters and should be considered binary.  The line
+endings should be CR for a paragraph break in OpenOffice.  Other line endings will cause
+problems and/or discrepancies.
+
+The other directories support the stages of the Haathi build from source code input
+through extension packaging and source code output.  The BuildProcess.odg document
+diagrams the build process, but here is a short, alphabetical summary of the directories.
+
+dll - The Haathi dll (dylib/so) linkable extension component is deposited in this
+directory for eventual further packaging.
+
+inc - The include files generated from IDL are stored in this directory for #include'ing.
+
+lib - The Haathi library is deposited here before being turned into the DLL or being
+linked to the ancillary projects.
+
+log - Some logging of the build process is recorded in this directory.
+
+oxt - The final OXT file (OpenOffice extension) lands here from where it can be installed
+into OpenOffice.
+
+pkg - The extension file is an archive of multiple files which are stored here while
+they wait to be zipped.
+
+reg - The various IDL files can be interdependent, so they are processed into intermediate
+and stored here before being further processed into the include files found in the inc
+directory.
+
+run - Batch files that install the extension are stored in this directory.  Their names
+should indicate which version will be installed.
+
+src - The source code for the Haathi extension is stored here along with other resources.
+
+	config - Haathi makes use of several configuration files at runtime, in particular
+	SSL certificates and a list of servers.  They are built with other projects, but the
+	version that should be distributed with the extension should be stored here, possibly
+	by manually copying the desired version.  The files are used by the Haathi-4-oxt project.
+	
+	dll - The C++ files that are used to convert the static Haathi library file
+	to a dynamic library that OpenOffice can use are stored here.  They are used by
+	the Haathi-3-dll project.
+	
+	idl - The Interface Definition Language files related to Haathi are stored here and
+	processed by the Haathi-1-idl project.
+	
+	images - The extension makes use of several images which are stored here and later
+	packaged into the oxt file by project haathi-4-oxt.
+	
+	lib - The source code files which are compiled into the Haathi library live here.
+	This is by far the majority of the files.
+	
+	pkg - Description, help, registration, and configuration files used in the oxt
+	files are stored here in their recommended hierarchy.  There are configuration files
+	for each of the target platforms.  They are renamed appropriately as they are
+	copied to ../pkg and included in the oxt file.
+
+zip - When the source code is zipped up for redistribution, it is deposited here.
+
+
+Some projects don't require any building, they sort of just are.  Others must be
+built, but only to incorporate into other projects.  Some run as tests and others
+are more traditional programs.  Here's a breakdown.
+
+Programs that just are:
+
+	README catch leptonica tesseract
+	boost for Windows
+	
+Programs that only need to build, but not run:	
+
+	Via compiler	
+		cJSON cyassl
+		cryptopp for Windows
+		haathi-2-lib
+	Via makefiles (the makefile runs)
+		boost for non-Windows
+		cryptopp for non-Windows
+		haathi-1-idl haathi-4-oxt haathi-5-run hathi-6-zip
+	
+Test programs that do run for a pass/fail result:
+
+	cJSONTest cryptoppTest cyasslTest boostTest leptonicaTest tesseractTest dependencyTest
+	cyasslSocketTest cyasslServerTest cyasslClientTest 
+	serializationTest bugTest pingTrustedTest pingProvenanceTest
+	catchTest
+	watermarkTest
+	   
+More traditional programs that build and run:
+
+	helloWorld defaultCertificates userCreate autotype traitorTracer
+	complextoolbarcontrols (just not via main)
+	haathi-3-dll (just not via main)
+	
+There are several kinds of build settings: debug/release, static/dynamic
+linking of the C runtime library, Windows/Linux/Macintosh, and some auto
+or default.  Debug and release pertain to both VC++ and Eclipse and have
+to do with debugging and optimization settings.  The static/dynamic issue
+is Windows only and has to do with how the C runtime library is linked.
+Windows builds are only through VC++.  Eclipse has to take care of both
+Linux and Macintosh, so there are build settings for both there.  Finally,
+some projects only have one configuration and are termed Auto for Windows
+and Default for the rest.  As a result, you will find these configurations
+for
+
+	Windows:
+		Debug-StatLink Debug-DynLink Release-StatLink Release-DynLink Auto
+	Linux:
+		Debug-Linux Release-Linux Default
+	Macintosh:
+		Debug-Mac Release-Mac Default
+
+leptonica's static distribution is broken, at least for Windows, so any
+projects that depend on it need to be built dynamically.  Those projects
+are the ones in this group:
+
+	leptonica leptonicaTest
+	tesseract tesseractTest
+	dependencyTest
+	traitorTracer
+
+VC++ keeps track of dependencies between projects _and_ configurations.  It is
+therefore possible to say that the Debug-StatLink build of boostTest requires
+the Auto build of boost.  Eclipse does not appear to be capable of doing this.
+It doesn't seem to know that the Debug-Linux build of serializationTest cannot
+be helped by the Release-Macintosh build of haathi-2-lib and requires the
+Debug-Linux version.  It just gives up.  Therefore, it is incumbent upon the
+user to monitor the build configuration of each project.  Right click on the
+project (or whatever for Mac), find Build Configurations, then Set Active, and
+lastly the appropriate choice.
+	
+After the build, the next issue is running.  The programs that run, the last
+two categories above, will have launch configurations in Eclipse, possibly with
+runtime parameters set.  Use these configurations.  They are part of the
+workspace and are not included in the per project .project or .cproject files,
+but they have been exported into the launches directory from which they can be
+re-imported.  For Visual Studio the run configuration is saved with the projects,
+so there isn't an issue.

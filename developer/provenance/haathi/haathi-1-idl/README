@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-1-idl/README#1 $
+
+Herewith begins the building of the Haathi extension.  This first step is to process
+all of the IDL code that comes with the OpenOffice SDK and add to it that which is
+part of Haathi and then use it to generate C++ code (class definitions in include files)
+so that OpenOffice and Haathi can interface.  Not even that is completely correct,
+because the OpenOffice IDL code has already been partially processed into a database
+file types.rdb, which is then converted to *.hpp (and *.hdl) files.  For a diagram of
+the process, see BuildProcess.odg in the README directory.  It is orchestrated by a
+makefile which includes further documentation.

@@ -1,0 +1,16 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/cyassl/README#1 $
+
+CyaSSL implements the Secure Sockets Layer that connects Haathi to the Java servers.
+The IP address and port numbers to share must be coordinated with the ProvenanceServer
+and TrustedServer Java projects.  SSL requires certificates and keys, which have to
+be created and configured.  See in particular KeystoreGenerate and PrivateKeyExtractor
+for this.  Furthermore, there is an important setting to keep track of, and that is
+whether the server validates the client.  Currently neither the Trusted nor Provenance
+servers validate the client, although portions of Haathi code indicate that
+it was the intention to require this of the Provenance server.  If you look in the
+pingProvenanceTest.cpp you can see how this might be arranged.  However, the Haathi
+UI and the defaultCertificates project aren't set up to provide the extra information
+needed.  Whether the server validates the client or not is determined at the server,
+but the client has to be prepared with the appropriate keys and certificates for
+that eventuality.  See the MockServer project for some examples on the Java side.
+ 

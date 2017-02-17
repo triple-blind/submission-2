@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+	<meta>
+		<topic indexer="include" status="PUBLISH">
+			<title xml-lang="en-US">Provenance - Introduction</title>
+			<filename>/com.provenance.extensions.haathi/Main.xhp</filename>
+		</topic>
+	</meta>
+	<body>
+		<!-- Table of contents entry -->
+		<bookmark id="contents" xml-lang="en-US" branch="contents">
+			<bookmark_value>Provenance/Introduction</bookmark_value>
+		</bookmark>
+
+		<!-- Index entry -->
+		<bookmark id="index" xml-lang="en-US" branch="index">
+			<bookmark_value>Provenance;Introduction</bookmark_value>
+		</bookmark>
+
+		<!-- F1 link at dialog level -->
+		<!--bookmark id="f1" xml-lang="en-US" branch="hid/vnd.com.provenance.haathi:login"/-->
+		
+		<!-- Tooltip for menu item -->
+		<paragraph xml-lang="en-US" role="paragraph">
+			<ahelp hid="vnd.com.provenance.haathi:" visibility="hidden">This menu contains commands used to track the provenance of OpenOffice documents.</ahelp>
+		</paragraph>
+
+		<!-- Page header -->
+		<paragraph xml-lang="en-US" role="heading" level="1">Provenance - Introduction</paragraph>
+
+		<!-- Dialog image -->
+		<image src="com.provenance.extensions.haathi/ExtensionManager.png"></image>
+
+		<!-- Overview -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Overview</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Haathi is an extension designed to allow for the creation of &quot;Provenance-Enabled&quot; documents.
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="paragraph">
+			<image src="com.provenance.extensions.haathi/Menu.png"></image>
+		</paragraph>
+
+		<!-- Controls -->
+		<paragraph xml-lang="en-US" role="heading" level="2">Login...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">New...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Open...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Share...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+
+		<paragraph xml-lang="en-US" role="heading" level="2">History...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Audit...</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Transcript</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+		
+		<paragraph xml-lang="en-US" role="heading" level="2">Logout</paragraph>
+		<paragraph xml-lang="en-US" role="paragraph">
+			Description
+		</paragraph>
+	</body>
+</helpdocument>

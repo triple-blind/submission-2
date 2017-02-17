@@ -1,0 +1,56 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/leptonica/README#1 $
+
+Leptonica is a library for image processing and analysis, according to its
+website.  It is used in the traitorTracer to detect tampering of a document's
+images.  The Windows project just organizes DLLs of which there are many, since
+leptonica is built upon and unifies the interface to gif, jpeg, png, tiff,
+and zlib libraries.  These libraries, being Linux-centric, are not easily 
+build under Windows, so pre-built components are used.  Unfortunately, not
+all these components were compiled with the correct options and some result
+in a dynamically linked C runtime library even though it should have statically
+linked.  This in turn prevents any (Windows) dependents of this project from
+statically linking to the C runtime library themselves.  For Linux, the dynamic
+version is used simply because that's what the RPM provides and so far no platform
+has these libraries being delivered to the user where they might be able to
+hack them.  A command such as "sudo yum install leptonica-devel" might install
+the packages as well as pull in its prerequisites which include giflib-devel,
+libjpeg-devel, libpng-devel, libtiff-devel, and zlib-devel.
+
+To figure out which libraries are being used for Windows, use the dumpbin command
+on the *.lib files and check the /DEFAULTLIB lines that are output.  Some will
+show LIBCMT or LIBCMTD (static) and others MSVCRTD or MSVCRTD (dynamic).  The
+leptonica developer was contacted, but did not respond.  Dependents of this project
+will only build for the Debug-DynLink and Release-DynLink configurations.
+
+> dumpbin /DIRECTIVES <static debug library>
+
+   Linker Directives
+   -----------------
+   /manifestdependency:"type='win32'
+   name='Microsoft.VC90.DebugCRT'
+   version='9.0.21022.8'
+   processorArchitecture='x86'
+   publicKeyToken='1fc8b3b9a1e18e3b'"
+   /DEFAULTLIB:"MSVCRTD"
+   /DEFAULTLIB:"OLDNAMES"
+
+Here are some additional notes:
+
+This mixes together libraries with conflicting runtime dependencies
+and can only build dynamically.
+
+See http://www.leptonica.org/vs2008doc/building-image-libraries.html
+
+See http://support.microsoft.com/kb/154753
+
+   cyassl: LIBCMTD -> /MTd (changed to /MD)
+ cryptopp: LIBCMTD libcpmtd -> /MTd (changed to /MD)
+leptonica: MSVCRTD (and MSVCR90D.DLL) (prebuilt) -> /MD
+tesseract: MSVCRTD (and MSVCR90D.DLL) (prebuilt) -> /MD
+
+haathi-build-lib: LIBCMTD libcpmtd -> /MTd
+
+/MT  - multi-threaded
+/MTd - multi-threaded debug
+/MD  - multi-threaded dll
+/MDd - multi-threaded dll debug

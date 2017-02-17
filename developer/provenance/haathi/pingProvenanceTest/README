@@ -1,0 +1,59 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/pingProvenanceTest/README#1 $
+
+The main program of this project sends an actual Haathi PING command to the
+Provenance Server in almost extactly the same way that the extension does,
+since it uses the same Haathi library to do so.  That includes JSON command
+encoding, SSL encryption with certificates, and response processing.  Start
+up the Provenance server from Java before running the test.  This test is
+able to be performed with the Provenance server doing client verification.
+That's the reason for the larger certificate count than is found with
+pingTrustedTest.  The Provenance server is not currently configured to
+perform that verification in production, but the capability can be tested
+in development.
+
+As noted in userCreate, the certificates can be a problem.  More up to date
+information about that can be found on the Java side, in particular with 
+the KeystoreGenerator.  Below is some documentation about previous versions
+of certificates and how to generate them.
+
+-----
+
+To make keystore files, use keytool that is part of the Java distribution.
+
+keytool -genkey -keystore keystore.jks -alias alias -keyalg RSA -storepass xxx -validity 360 -keysize 1024
+keytool -exportcert -keystore keystore.jks -alias alias -file alias.pem -rfc
+
+To inspect the keystore, use
+
+keytool -list -v -keystore <file>
+
+file: plain\ca.jks <- using this one as .\ca.jks
+pwd: rootpw
+alias: haathi
+valid: May 15, 2013 - May 15, 2017
+GOOD!
+
+This is the same as the TrustedServer uses.
+Rename this simply ca.jks and use, need to generate certificate from it?
+
+file: old\ca_old.jks
+pwd: rootpw
+alias: root
+valid: Mar 2, 2012 - Jul 16, 2013
+EXPIRED!
+
+file: plain\ps.jks <- using this one as ps.jks
+pwd: provenance
+alias: provenanceserver
+valid: May 15, 2013 - May 15, 2017
+GOOD!
+
+file: old\ps_old.jks
+pwd: provenance
+alias: provenanceserver
+valid: Apr 16, 2012 - Jan 12, 2015
+GOOD!
+
+Need pem file for client such as userCreate
+
+keytool -exportcert -keystore ca.jks -alias haathi -file ca-cert.pem -rfc

@@ -1,0 +1,6 @@
+
+This extension allows for creating provenance-enabled documents with multiple collaborators, while storing the provenance securely in the cloud.  
+
+Authors: Aaron Gibson, Nitin Shinde, Sam Martin, Keith Alcock  
+
+Configuration: The SmartTextDocumentListener takes care of document differencing. Watermarking is supplied by the BothwhereEngine using the FgLuminanceScheme with the StyleEmbedder.

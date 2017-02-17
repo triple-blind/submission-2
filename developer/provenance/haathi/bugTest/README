@@ -1,0 +1,6 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/bugTest/README#1 $
+
+Now and then some low-level bugs are discovered in the Haathi code, especially
+as it is ported between operating systems.  This project is intended to 
+ensure that they are corrected, that the correction works across all the
+target platforms, and that the fix doesn't cause a problem somewhere else.

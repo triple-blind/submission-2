@@ -1,0 +1,18 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/haathi-6-zip/README#1 $
+
+The source code is zipped up for distribution with this project.
+The developer should first clean up all other projects so that
+as many of the intermediate files as possible are removed.  This
+includes server projects in Java, since they are all zipped from
+here rather than an ANT build.xml file over there.  Both
+Visual Studio and Eclipse have build options for cleaning.  The
+makefile of this project will delete even more files.  It is
+particular to its own platform, so, for example, the Windows makefile
+deletes extra files that Visual Studio produces (and Eclipse for
+Java), but does not concern itself with Macintosh files.  Because
+the additional files are erased unbeknownst to the IDEs, it's
+important to refresh all projects and probably also recompile after
+downloading a new distribution.  The Eclipse workspaces that are
+included with the source aren't really intended for redistribution,
+but they do contain important information about, for example,
+run configurations, which should be preserved.

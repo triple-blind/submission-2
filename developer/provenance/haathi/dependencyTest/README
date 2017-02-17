@@ -1,0 +1,8 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/dependencyTest/README#1 $
+
+This project is designed to ensure that all prerequisites play nicely with
+each other.  One way they might not is to handle the C runtime libraries
+differently, which is the case with leptonica.  Because of that, only
+the Debug-DynLink and Release-DynLink configurations will run under Windows.
+Luckily, only one of the test programs needs to be starting in a specific
+directory: tesseract.  So, that one is configured.  

@@ -1,0 +1,8 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi/catch/README#1 $
+
+Catch (https://github.com/philsquared/Catch/) is being used as a unit testing
+framework.  This project provides a main function for other unit testing
+projects, such as watermarkTest.  Code has been added so that it plays better
+with this old Visual C++ 2008.  Output is nicer and the program waits for user
+acknowledgement before exiting, which helps because Visual Studio doesn't
+want to capture the output in the IDE.

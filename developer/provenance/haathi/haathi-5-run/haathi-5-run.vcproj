@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="haathi-5-run"
+	ProjectGUID="{40B45439-3F50-4C2D-8F73-CF4BEDA7C139}"
+	RootNamespace="haathi-5-run"
+	Keyword="Win32Proj"
+	TargetFrameworkVersion="196613"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug-StatLink|Win32"
+			OutputDirectory="$(ProjectDir)run\$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			CharacterSet="1"
+			BuildLogFile="$(SolutionDir)log\$(ProjectName)-$(ConfigurationName)-Log.htm"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) build"
+				ReBuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) rebuild"
+				CleanCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) clean"
+				Output=""
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug-DynLink|Win32"
+			OutputDirectory="$(ProjectDir)run\$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			CharacterSet="1"
+			BuildLogFile="$(SolutionDir)log\$(ProjectName)-$(ConfigurationName)-Log.htm"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) build"
+				ReBuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) rebuild"
+				CleanCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) clean"
+				Output=""
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release-StatLink|Win32"
+			OutputDirectory="$(ProjectDir)run\$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			BuildLogFile="$(SolutionDir)log\$(ProjectName)-$(ConfigurationName)-Log.htm"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) build"
+				ReBuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) rebuild"
+				CleanCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) clean"
+				Output=""
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release-DynLink|Win32"
+			OutputDirectory="$(ProjectDir)run\$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			CharacterSet="1"
+			WholeProgramOptimization="1"
+			BuildLogFile="$(SolutionDir)log\$(ProjectName)-$(ConfigurationName)-Log.htm"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) build"
+				ReBuildCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) rebuild"
+				CleanCommandLine="nmake /I /f makefile.windows.mk ProjectDir=&quot;$(ProjectDir)\&quot; ConfigurationName=$(ConfigurationName) clean"
+				Output=""
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath=".\makefile.windows.mk"
+			>
+		</File>
+		<File
+			RelativePath=".\README"
+			>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

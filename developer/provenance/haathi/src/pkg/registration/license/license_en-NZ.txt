@@ -1,0 +1,5 @@
+License information
+
+This software is provided "AS IS" with no warranty, essentially as implied by GPL v2.
+
+We take no responsibility for any security vulnerabilities that may arise as a result of this extension; it is still a work in progress, and there are bound to be bugs. Let us know if you discover any problems, but don't use this with confidential information until we are sure it works.
