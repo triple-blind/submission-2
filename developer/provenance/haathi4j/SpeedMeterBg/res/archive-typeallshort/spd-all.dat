@@ -1,0 +1,48 @@
+
+#Document	Load	Type	Save
+Scheme	FG	FG	FG
+DofI	-	311.68831168831167	-
+Twain	-	319.57390146471374	-
+SofU	-	312.0936280884265	-
+Turing	-	290.4162633107454	-
+
+
+#Document	Load	Type	Save
+Scheme	+BG	+BG	+BG
+DofI	-	173.08524448290785	-
+Twain	-	188.2648258550361	-
+SofU	-	195.63090968373	-
+Turing	-	184.020855696979	-
+
+
+#Document	Load	Type	Save
+Scheme	+BL	+BL	+BL
+DofI	-	147.45637748832638	-
+Twain	-	148.8464400893079	-
+SofU	-	159.7656770070563	-
+Turing	-	143.93666786613892	-
+
+
+#Document	Load	Type	Save
+Scheme	+CW	+CW	+CW
+DofI	-	152.14910612400152	-
+Twain	-	156.25	-
+SofU	-	155.4605518849592	-
+Turing	-	152.84677111196027	-
+
+
+#Document	Load	Type	Save
+Scheme	+WS	+WS	+WS
+DofI	-	126.09015446043921	-
+Twain	-	138.64818024263434	-
+SofU	-	143.54066985645935	-
+Turing	-	128.76918124262258	-
+
+
+#Document	Load	Type	Save
+Scheme	+Syn	+Syn	+Syn
+DofI	-	-	-
+Twain	-	-	-
+SofU	-	-	-
+Turing	-	-	-
+

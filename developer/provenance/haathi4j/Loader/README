@@ -1,0 +1,24 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/Loader/README#1 $
+
+In order to bootstrap a Java program that interacts with OpenOffice, a Loader
+program must first be started which configures OpenOffice for use under such
+conditions.  These files implement the Loader.  They were extracted from the
+OpenOffice binary distribution using the build.xml file from the FirstUnoContact
+project.  They were extracted from the jar files in program/classes using
+the code
+
+	<fileset id="bootstrap.glue.code" dir="${OO_SDK_HOME}/classes">
+		<patternset>
+			<include name="com/sun/star/lib/loader/*.class" />
+		</patternset>
+	</fileset>
+	
+Now that they are here, other projects can use them without requiring
+OpenOffice to be installed.
+
+These files need to get to the bin directory of projects, but OpenOffice
+doesn't seem to have a way of doing that and it also likes to erase any
+unrecognized files in that directory.  It seems to work best to reference
+this project as a library.  In the Java Build Path properties, add a Library
+containing a class folder for Loader/loader.  In addition, copy these
+class files to the bin folder of the particular project.

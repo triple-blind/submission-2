@@ -1,0 +1,36 @@
+
+#Scheme	Pages	Embedded	Extracted
+Scheme	High	High	High
+FG	2	158	158
+BG	2	158	158
+BL	2	79	78
+CW	2	20	18
+WS	2	15	10
+Syn	2	0	0
+
+Total	2	430	422
+
+
+#Scheme	Pages	Embedded	Extracted
+Scheme	Medium	Medium	Medium
+FG	2	164	164
+BG	2	164	164
+BL	2	82	81
+CW	2	21	19
+WS	2	16	11
+Syn	2	0	0
+
+Total	2	447	439
+
+
+#Scheme	Pages	Embedded	Extracted
+Scheme	Low	Low	Low
+FG	2	164	164
+BG	2	164	164
+BL	2	82	30
+CW	2	9	3
+WS	2	16	5
+Syn	2	0	0
+
+Total	2	435	366
+

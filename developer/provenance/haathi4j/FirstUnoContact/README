@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/FirstUnoContact/README#1 $
+
+This is the Hello, World! program for UNO and was adapted from the OpenOffice Wiki
+at https://wiki.openoffice.org/wiki/Documentation/DevGuide/FirstSteps/First_Contact.
+It can be built using the build.xml ant file, but, more usefully, Eclipse will
+also compile the single source file on its own and then also run it and debug it
+from a launch configuration.  The launch configuration is very carefully constructed
+to do this and can serve as a template for other launches.  Note the dependency
+on the Loader project and that unseen Loader files that are placed in the bin
+directory, possibly by hand.

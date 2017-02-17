@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/WatermarkBitAnalyzer/README#2 $
+
+This project is used to evaluate the fidelity of the watermarking process.  It
+compares the watermark bits that were embedded into a document with the watermark
+bits that were extracted from it.
+
+Given knowledge of the text that was used to create the document and the imperfect
+text that was extracted, the analyzer aligns the corresponding sets of watermarks
+so that the accuracy of watermark extraction can better be measured.  For example,
+if during OCR a character is lost in the output, all the watermark bits will be
+shifted and half the subsequent comparisons, on average, will show mismatches.
+After alignment, only the deleted watermark should be in error.

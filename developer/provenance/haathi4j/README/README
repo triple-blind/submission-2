@@ -1,0 +1,86 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/README/README#5 $
+
+This haathi4j directory contains Java source files in projects that are used
+to remote control OpenOffice and evaluate its performance for speed and
+accuracy.  Several projects exist only to provide shared code or configuration
+settings.  Here is a brief description of them all.  More details can be
+found in the individual README file that are part of each project.
+
+In order for some projects to compile, a user library needs to be present
+and configured with Eclipse.  A placeholder for the library is included
+in the Exe project and called exe_lib.  Select it and from its properties
+dialog click on User Libraries... and create a new one.  To it Add
+External JARs... and include all from the program\classes directory
+of the OpenOffice installation.
+
+In order to run, most of the projects need to access the class files that are
+included with the Loader project described below.  Those files can be copied
+to the bin directory of the projects so that they can be accessed when the
+program launches.  It is unfortunate that this doesn't happen automatically.
+It seems to be a combination of Eclipse and the weird way in which Java
+extensions are started up in OpenOffice.
+
+Also note that the OpenOffice's bootstrapping only supports 32-bit Java, so
+when you get around to running to programs, you  may have to choose an
+alternative JRE.
+
+AccuracyMeter - Projects named meter are generally used to drive lower-lever
+programs.  The meters are more or less scripts which are used to configure
+and group the other programs.  This one controls the WatermarkBitAnalyzer and
+all the programs it depends on.  For each of the meters there is also a
+*.vsd documentation diagram along with a launch file.  Directory and environment
+settings are fairly specific to an installation, so changes will be necessary. 
+
+BugModify - This project is a translation of the C++ bugModify project.  It
+checks whether the bug that is exposed in the C++ program also occurs in the
+Java context.  It does not!
+
+Exe - Several jar files are required from the OpenOffice binary distribution.
+They are included here so that an OpenOffice installation is not required to
+build thise programs.
+
+FirstUnoContact - This is a Hello, World! program taken from the OpenOffice
+wiki but modified to work well with Eclipse.  Use it to test your configuration.
+There is a launch configuration for the program, but it can also be built
+into a jar file and run using the Ant build.xml file.  If the launch configuration
+does not work, refer to the build.
+
+FormatTimer - The initial complete watermarking of a document using Haathi takes
+a significant amount of time.  This program can be used to quantify that amount
+and also to experiment with different algorithms for traversing the document and
+changing character styles or properties.
+
+launches - The launch configurations are stored here.  There should be one each
+named after the project whose main program they launch.
+
+Loader - Several class files are required in order to bootstrap a Java program
+that interacts with OpenOffice.  Those files are included here.  I haven't been
+able to get projects to work by simply referencing this project, so for now all
+of these files are copied to each project that requires them.  They are therefore
+included for reference.
+
+PrecisionAnalyzer - There is an WatermarkBitAnalyzer below which similarly measures
+performance of the system but in terms of accuracy.  This project, despite the name,
+calculates both precision and recall.  There is an ExactPrecisionAnalyzer in which
+only exact matches to the incoming watermarks are recognized and another that
+leverages the C++ TraitorTracer to perform inexact matches.
+
+PrecisionMeter - This is a driver for the PrecisionAnalyzer above.  It can choose, by
+means of commenting out the undesired one, between the Exact- and Approximate-
+PrecisionAnalyzer.  It also runs the document creation and conversion to JPG that
+precedes the analysis.
+
+README - You are probably looking at this project now.  It houses this README file
+and other documentation.
+
+SpeedMeter - This is a driver for the C++ autotype program, which can measure the
+time it takes to load, type, and save Provenance documents with and without
+watermarks.  It adds a WPM calculation and makes it easier to script autotype. 
+
+TraitorTracer - This program is used to drive the correspondingly named C++ program,
+but it first transforms out.wm into out.wmc.  In doing so it decides what should
+become of the indeterminate bits from the watermark bit extraction.
+
+WatermarkBitAnalyzer - This project is used to evaluate the fidelity of the
+watermarking process.  It compares the watermark bits that were embedded into
+a document with the watermark bits that were extracted from it.

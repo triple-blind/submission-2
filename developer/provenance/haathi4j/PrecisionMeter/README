@@ -1,0 +1,8 @@
+$Header: //MyDataDepot/Projects/provenance-autotype2/haathi4j/PrecisionMeter/README#2 $
+
+This is a driver for the PrecisionAnalyzer above.  It can choose, by
+means of commenting out the undesired one, between the Exact- and Approximate-
+PrecisionAnalyzer.  It also runs the document creation and conversion to JPG that
+precedes the analysis.  It controls the variables for the processes and can
+be used to script the exploration of the variable space.  How does the precision
+vary across JPG resolution or watermarking schemes, for example.

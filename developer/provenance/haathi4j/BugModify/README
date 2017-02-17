@@ -1,0 +1,4 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/BugModify/README#1 $
+
+This project is a translation of the C++ bugModify project.  It checks whether the
+bug that is exposed in the C++ program also occurs in the Java context.  It does not!

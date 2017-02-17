@@ -1,0 +1,21 @@
+$Header: //MyDataDepot/Projects/provenance-autotype2/haathi4j/PrecisionAnalyzer/README#2 $
+
+While the similar WatermarkBitAnalyzer will output a confusion matrix and derive
+from it the watermarking accuracy, this program calculates precision and
+recall.
+
+There are exact and approximate versions with the exact one running for the
+most part in Java and the approximate using the TraitorTracer to perform
+comparisons that may include up to 10% mismatched bits.
+
+In the exact Java version, an external program autoRnd generates random
+watermarks just as Haathi would.  If an extracted, probably misaligned
+and error-prone watermark is actually found in the list of these possible
+watermarks, then it is assumed good.  It is then compared to what was
+actually inserted into the document and then categorized as a true or
+false positive.
+
+The the approximate C++ version, the same automatically generated
+random numbers are used internal to that, but the comparison is performed
+in an inexact way which allows for more errors in the OCR and watermark
+extraction.

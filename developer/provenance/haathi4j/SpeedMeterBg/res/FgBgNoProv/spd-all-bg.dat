@@ -1,0 +1,47 @@
+
+#Document	Load	Type	Save
+Scheme	"FG^{part}+FG^{full}"	"FG^{part}+FG^{full}"	"FG^{part}+FG^{full}"
+DofI	-	112.19671824599132	-
+Twain	-	101.68672861083218	-
+SofU	-	145.57630017833097	-
+Turing	-	123.44789984260393	-
+
+
+#Document	Load	Type	Save
+Scheme	"+BG^{part}+BG^{full}"	"+BG^{part}+BG^{full}"	"+BG^{part}+BG^{full}"
+DofI	-	63.53761559213086	-
+Twain	-	70.2485628314854	-
+SofU	-	85.83813788466215	-
+Turing	-	68.41700162490379	-
+
+
+#Document	Load	Type	Save
+Scheme	"+BL^{part}+BL^{full}"	"+BL^{part}+BL^{full}"	"+BL^{part}+BL^{full}"
+DofI	-	44.782970529073474	-
+Twain	-	47.25097750459713	-
+SofU	-	54.098161113340154	-
+Turing	-	41.1387902795895	-
+
+
+#Document	Load	Type	Save
+Scheme	"+CW^{part}+CW^{full}"	"+CW^{part}+CW^{full}"	"+CW^{part}+CW^{full}"
+DofI	-	46.04519719814975	-
+Twain	-	43.29668148976665	-
+SofU	-	53.774282449418564	-
+Turing	-	50.36884686821201	-
+
+
+#Document	Load	Type	Save
+Scheme	"+WS^{part}+WS^{full}"	"+WS^{part}+WS^{full}"	"+WS^{part}+WS^{full}"
+DofI	-	19.76886897358385	-
+Twain	-	20.514573895204716	-
+SofU	-	22.8297471605502	-
+Turing	-	21.421494684791632	-
+
+
+#Document	Load	Type	Save
+Scheme	"+Syn^{part}+Syn^{full}"	"+Syn^{part}+Syn^{full}"	+Syn^{part}+Syn^{full}"
+DofI	-	-	-
+Twain	-	-	-
+SofU	-	-	-
+Turing	-	-	-

@@ -1,0 +1,14 @@
+$Header: //MyDataDepot/Projects/provenance-autotype2/haathi4j/PrecisionMeter/README#1 $
+
+This is a driver for the C++ autotype program, which can measure the
+time it takes to load, type, and save Provenance documents with and without
+watermarks.  It adds a WPM calculation and makes it easier to script autotype.
+
+This all happens for a presently hard-coded user.  The save occurs to a local
+file and not the network so that this can all work without running servers.
+While the Haathi extension is not accessed directly, the extension configuration
+is used to find the dictionary for the synonym watermarking.  The bootstrapping
+of OpenOffice in C++ is already complex, and starting the C++ from Java makes
+it even more so.  Take into account all the parameters in the code and also
+in the launch configuration.
+ 

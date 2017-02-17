@@ -1,0 +1,14 @@
+$Header: //MyDataDepot/Projects/provenance-autotype2/haathi4j/DensityMeter/README#1 $
+
+Projects named meter are generally used to drive lower-lever programs.  The meters
+are more or less scripts which are used to configure and group the other programs.
+This one controls the WatermarkBitAnalyzer and all the programs it depends on.
+For each of the meters there is also a *.vsd documentation diagram along with a
+launch file.  Directory and environment settings are fairly specific to an
+installation, so changes will be necessary.
+
+This meter, at least temporarily, totals up the accuracies of the multiple
+watermarking schemes which can be used on a document and computes an overall
+accuracy.  It controls the parameters of the watermarking and conversion to JSP
+so that the accuracy can be measured across various dimensions of the problem
+space.

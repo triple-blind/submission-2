@@ -1,0 +1,91 @@
+
+#Name	Users	Documents	Theories	Time
+Total	Total	Total	Total	Total
+"1u1d"	1	1	1	1.787
+"2u1d"	2	1	2	2.145
+"1u4d"	1	4	4	3.584
+"2u4d"	2	4	8	7.12
+"8u2d"	8	2	16	13.758
+"8u4d"	8	4	32	27.011
+"8u8d"	8	8	64	54.575
+"16u8d"	16	8	128	107.988
+"16u16d"	16	16	256	214.521
+
+
+#Name	Users	Documents	Theories	Time
+FG	FG	FG	FG	FG
+"1u1d"	1	1	1	1.687
+"2u1d"	2	1	2	1.763
+"1u4d"	1	4	4	1.956
+"2u4d"	2	4	8	2.529
+"8u2d"	8	2	16	5.078
+"8u4d"	8	4	32	10.063
+"8u8d"	8	8	64	19.992
+"16u8d"	16	8	128	39.788
+"16u16d"	16	16	256	79.79
+
+
+#Name	Users	Documents	Theories	Time
+BG	BG	BG	BG	BG
+"1u1d"	1	1	1	1.69
+"2u1d"	2	1	2	1.755
+"1u4d"	1	4	4	1.862
+"2u4d"	2	4	8	2.534
+"8u2d"	8	2	16	5.156
+"8u4d"	8	4	32	10.195
+"8u8d"	8	8	64	20.078
+"16u8d"	16	8	128	39.832
+"16u16d"	16	16	256	79.331
+
+
+#Name	Users	Documents	Theories	Time
+BL	BL	BL	BL	BL
+"1u1d"	1	1	1	0.861
+"2u1d"	2	1	2	1.021
+"1u4d"	1	4	4	1.063
+"2u4d"	2	4	8	1.509
+"8u2d"	8	2	16	2.744
+"8u4d"	8	4	32	5.497
+"8u8d"	8	8	64	10.353
+"16u8d"	16	8	128	20.63
+"16u16d"	16	16	256	41.198
+
+
+#Name	Users	Documents	Theories	Time
+CW	CW	CW	CW	CW
+"1u1d"	1	1	1	0.276
+"2u1d"	2	1	2	0.292
+"1u4d"	1	4	4	0.315
+"2u4d"	2	4	8	0.722
+"8u2d"	8	2	16	0.945
+"8u4d"	8	4	32	1.682
+"8u8d"	8	8	64	3.317
+"16u8d"	16	8	128	6.301
+"16u16d"	16	16	256	12.517
+
+
+#Name	Users	Documents	Theories	Time
+WS	WS	WS	WS	WS
+"1u1d"	1	1	1	0.207
+"2u1d"	2	1	2	0.22
+"1u4d"	1	4	4	0.244
+"2u4d"	2	4	8	0.326
+"8u2d"	8	2	16	0.909
+"8u4d"	8	4	32	1.264
+"8u8d"	8	8	64	2.401
+"16u8d"	16	8	128	4.743
+"16u16d"	16	16	256	9.455
+
+
+#Name	Users	Documents	Theories	Time
+Syn	Syn	Syn	Syn	Syn
+"1u1d"	1	1	1	0.021
+"2u1d"	2	1	2	0.02
+"1u4d"	1	4	4	0.021
+"2u4d"	2	4	8	0.021
+"8u2d"	8	2	16	0.026
+"8u4d"	8	4	32	0.033
+"8u8d"	8	8	64	0.041
+"16u8d"	16	8	128	0.06
+"16u16d"	16	16	256	0.115
+

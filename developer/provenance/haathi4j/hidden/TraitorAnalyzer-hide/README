@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autotype2/haathi4j/TraitorAnalyzer/README#1 $
+
+This program is used to drive the correspondingly named C++ program, but it first
+transforms out.wm into out.wmc.  In doing so it decides what should become of the
+indeterminate bits from the watermark bit extraction.  There may well be different
+strategies for dealing with these bits.  In addition, even if none is indeterminate,
+the watermark bit extractor includes spaces and dashes in its output showing that
+some characters are not watermarked at all or that some letters group into words, etc.
+This program removes all that extra formatting so that only the bits remain and the
+C++ version traitorTracer can do its work as efficiently as possible. 

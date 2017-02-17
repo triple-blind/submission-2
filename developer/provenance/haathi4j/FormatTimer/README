@@ -1,0 +1,6 @@
+$Header: //MyDataDepot/Projects/provenance-autoType/haathi4j/BugModify/README#2 $
+
+The initial complete watermarking of a document using Haathi takes a significant
+amount of time.  This program can be used to quantify that amount and also to
+experiment with different algorithms for traversing the document and changing
+character styles or properties.

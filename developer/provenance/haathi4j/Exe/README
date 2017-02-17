@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/haathi4j/Exe/README#1 $
+
+Contained in this project are the jar files from the OpenOffice.  These originate
+specifically from the program/classes directory of the OpenOffice binary distribution.
+Having them here makes it possible to build these projects without having OpenOffice
+installed, or having a different version installed.
+
+These are required for compilation of other projects.  They should declare themselves
+dependent upon this project and for the Java Build Path property, list Exe as a
+required project on the build path.

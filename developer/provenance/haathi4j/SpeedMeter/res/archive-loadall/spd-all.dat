@@ -1,0 +1,48 @@
+
+#Document	Load	Type	Save
+Scheme	FG	FG	FG
+DofI	11.609	-	-
+Twain	21.378	-	-
+SofU	47.16	-	-
+Turing	119.138	-	-
+
+
+#Document	Load	Type	Save
+Scheme	+BG	+BG	+BG
+DofI	12.261	-	-
+Twain	22.768	-	-
+SofU	50.998	-	-
+Turing	117.554	-	-
+
+
+#Document	Load	Type	Save
+Scheme	+BL	+BL	+BL
+DofI	13.271	-	-
+Twain	23.637	-	-
+SofU	51.243	-	-
+Turing	123.858	-	-
+
+
+#Document	Load	Type	Save
+Scheme	+CW	+CW	+CW
+DofI	17.753	-	-
+Twain	29.371	-	-
+SofU	66.314	-	-
+Turing	149.253	-	-
+
+
+#Document	Load	Type	Save
+Scheme	+WS	+WS	+WS
+DofI	21.554	-	-
+Twain	34.6	-	-
+SofU	70.213	-	-
+Turing	162.203	-	-
+
+
+#Document	Load	Type	Save
+Scheme	+Syn	+Syn	+Syn
+DofI	27.482	-	-
+Twain	44.373	-	-
+SofU	93.22	-	-
+Turing	207.483	-	-
+
