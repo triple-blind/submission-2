@@ -1,0 +1,29 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/DeployComboServer/README#1 $
+
+This project is used to create first a .jar and then a .zip file containing
+all the materials needed to deploy the ComboServer with its required libraries,
+JNI files, database, keystore, a startup file just in case, and some double
+click support.  The user (may) need only unzip the file and double click on
+the jar in order to run the servers.  Here are some recently used basic
+installation instructions for the ComboServer that can be reused:
+
+
+Download and unzip ComboServer.zip.  You should find extracted
+
+db - a folder that contains the SQLite database
+
+ComboServer.jar - a Java archive containing both the Provenance and Trusted
+servers complete with SSL certificates that work with the current Haathi
+extension. 
+
+ComboServer.sh - a shell script that shows how the server could be started
+from the command line or other script.  If double clicking on ComboServer.jar
+does not start the servers, then it may be necessary to start them from
+the command line.  One would need to "chmod u+x ComboServer.jar" in order to
+run it or simply copy the commands to the command line.
+
+Multiple .so, .jnilib, and .dll files - the JNI (Java native interface) files
+for Linux, Macintosh, and Windows, respectively, that provide an interface to
+SQLite from the Java libraries that the servers use. 
+
+So, cross your fingers and click on ComboServer.jar first.

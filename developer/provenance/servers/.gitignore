@@ -1,0 +1,5 @@
+# Eclipse workspace
+.metadata/
+
+# Zip distribution
+zip/*.zip

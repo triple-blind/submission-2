@@ -1,0 +1,4 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/SQLiteTest/README#1 $
+
+The SQLite version number and thread safety is checked with
+this test.

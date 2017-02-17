@@ -1,0 +1,14 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/UserCreate/README#1 $
+
+The database user table is supplied with a single user in DatabaseGenerator,
+but that isn't really enough to do anything useful with Haathi.  This project
+adds another three users, a simple user, an auditor, and an administrator so
+that some simple exploration can be performed.  Some component will eventually
+need to manage how users are added to the system.  Presently they can be added
+by direct database manipulation, this UserCreate project, or the C++ userCreate
+project.  The first can easily be misused and the latter two have no user
+interface.  The DatabaseGenerator includes the functionality, but it would need
+slight modification.  This version works over the network and assumes that
+TrustedServer is running.  Comments in the code can be edited to start the
+server.  However, this shows how additional users might be created and it is
+waiting for a UI.

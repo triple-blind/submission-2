@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/MockServer/README#1 $
+
+In this project a server is implemented that imitates (mocks) the Trusted
+and Provenance servers in how they access the network.  The full servers
+are/were too monolithic to be used for network diagnostics such as testing
+the firewall and SSL certificates.  This much simpler server was developed
+for testing purposes.  The server can be configured by private static
+variables to default to settings appropriate for either the Trusted or
+Provenance servers.  It does not understand any commands, but assumes that
+it has been PINGed and returns an affirmative response.  Since a PING does
+not require authentication or authorization beyond SSL, this is not a test
+of the database in any way.

@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/SynchronizeTest/README#1 $
+
+This is a simple test just to verify that synchronization
+works as expected, since the (Java) documentation was a little ambiguous.
+The SQLite4Java documentation is even more sparse.  If a series of SQL
+statements uses multiple tables, what if any synchronization needs to be
+done?  I can imagine that each prepare or step call locks the appropriate
+tables or rows for read or write, but if there are multiple prepares,
+they can't know about each other (yet).  Perhaps a transaction will take
+care of it.

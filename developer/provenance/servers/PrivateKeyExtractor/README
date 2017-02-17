@@ -1,0 +1,12 @@
+$Header$
+
+Previously openssl was used for certificates.  This software is not delivered
+with any of the target platforms and since we're using Java anyway, keytool,
+part of the JDK is a likely replacement candidate.  However, it appears that
+keytool will not output private keys, probably for security reasons.  CyaSSL
+of Haathi cannot use *.jks files that keytool prefers, however, especially if
+client validation is used on the server (which is currently not the case).
+The program included here extracts the private key from a Java keystore,
+allowing keytool and CyaSSL to work together.  Note from the code that the
+expected arguments are <keystore filename> <keystore password> <alias>
+and optionally <key password: defaults to keystore password>".

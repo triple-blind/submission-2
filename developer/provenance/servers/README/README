@@ -1,0 +1,283 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/README/README#1 $
+
+Welcome to the Provenance servers workspace, which you are hopefully visiting
+with Eclipse.  The collection of projects you see here will help you further
+develop the Provenance and Trusted servers that provide the backend support
+for the Haathi extension for OpenOffice.
+
+Here are brief summaries of the included projects so that you can figure out
+where to start.  Eclipse organizes projects by directory, so there is logically
+a directory for each of these projects.  There are also several non-project
+directories: cfg, db, doc, keystore, etc.  These are explained afterwards.
+The summaries are sorted in alphabetical order for ease of access.  However, it
+is better to approach them in an order that ensures all prerequisite projects
+are first visited.  Some of the dependencies are at compile-time and others
+only appear at run-time.  For more details about project dependencies, see the
+document ProjectDependencies.odg that is part of this project.  None of these
+projects is dependent upon the C++ projects, so they can all be built first.
+This is the recommended processing order:
+
+	README
+	JSON JSONTest
+	PasswordHash PasswordHashTest
+	CustomBouncyCastle
+	SQLite SQLiteTest DatabaseGenerator
+	SynchronizeTest
+	Configure
+	MockServer MockClient MockServerTest
+	SharedServer
+	TrustedServer TrustedServerTest TrustedLocalSQLiteDataAccessorTest
+	ProvenanceServer ProvenanceServerTest ProvenanceLocalSQLiteDataAccessorTest
+	CertificateGeneratorTest
+	Pinger
+	UserCreate
+	ComboServer DeployComboServer
+	PrivateKeyExtractor KeystoreGenerator
+	List DeployList
+	NewUser DeployNewUser
+	WordNet
+	JavaDoc
+	
+CertificateGeneratorTest - Implemented in this project is a test to verify
+that a private/public key pair can be created.  Internally to TrustedServer
+this functionality is provided by BouncyCastle.  The format of the keystore
+has been changed and functionality is dependent on certificates, so this
+processes requires testing.
+
+Configure - The servers have addresses and the users have passwords that
+all have to be stored somewhere.  Those properties which might need to be
+configured after deployment are summarized here as JavaBeans.  They can
+be written to and read from XML files, config.xml in particular, stored
+in the cfg directory. 
+
+ComboServer - This project combines the Trusted and Provenance servers into
+a single program that starts them both up for convenience.  Killing the
+single parent process will also stop both the servers.  This makes for a
+simple test deployment on other machines.
+
+CustomBouncyCastle - BouncyCastle provides cryptographic services for the
+server side when the standard Java libraries can't handle them.  Of the
+multiple BouncyCastle components, only the bcprov and bcpkix are needed for
+the servers.  Two BouncyCastle files from bcprov had to be modified in
+order to provide the needed functionality.  This project provides access to
+the required packages, modified or not. 
+
+DatabaseGenerator - This project creates the local SQLite database tables that
+the two servers can access and populates them with an initial user so that
+other projects, UserCreate for Java or userCreate for C++, can be used to
+create additional users.  You'll want to edit at least the password in this
+file (or edit the resulting database) if you don't want to use the default
+password that everyone else knows.
+
+DeployComboServer - This project is used to create first a .jar and then a
+.zip file containing all the materials needed to deploy the ComboServer with
+its required libraries and JNI files, etc.  The user (may) need only unzip the
+file and double click on the jar in order to run the servers.
+
+DeployList - A .jar file is created to contain the files for the List program
+and arrange for the calling of List.main().  Certain keystore files, the
+required libraries, a configuration file, and project dependencies are included.
+None of the files, except perhaps the configuration file, should need to be
+changed, so none are exposed by creating a zip file for unzipping.
+
+DeployNewUser - An Ant file is used to create a .jar file that contains
+everything necessary to create a new user from the command line.
+
+JavaDoc - This project can produce documentation for all of the other
+projects.  Documentation is deposited in the doc directory.  Neither
+BouncyCastle nor JUnit are included, the former because of size and online
+availability and the latter because it involves an absolute path that isn't
+easily shared between computers. 
+
+JSON - The servers have two external, third-party prerequisites: JSON and
+(Custom)BouncyCastle.  This is the simplest, for it consists of a small number
+of Java source code files copied verbatim from the JSON website.  The source
+is compiled into jar file that is reused by other projects.
+
+JSONTest - ProvenanceServer needs to concatenate two JSONArrays of strings
+and this project tests JSONStringArray, which is meant to slightly optimize
+the concatenation and provide a few other utility functions.
+
+KeystoreGenerator - This project can be used to generate a complete set of
+certificates for the two Trusted and Provenance servers and Haathi.  In fact,
+since this source code is public and everyone knows the private keys supplied
+with it, the project should be rerun before the system goes into production.
+
+List - A request was made for a program that can list out the events related
+to a Provenance document without going through the Haathi auditor dialog.
+This is a command line program that will contact the Trusted and Provenance
+servers, given a user name and password, and either list out the available
+documents or list out the events, depending on whether or not a document was
+specified in advance.
+
+MockClient - In order to test the (mock) server, a (mock) client is needed.
+That client might come from the C++ side, but that functionality is not yet
+assumed.  Here's a client that can send some simple, although SSL encrypted,
+requests to MockServer for testing.
+
+MockServer - The servers are/were too monolithic to be used for network
+diagnostics such as testing the firewall and SSL certificates, so this much
+simpler server was developed for testing purposes.  It access the network
+in the same way that TrustedServer.java and ProvenanceServer.java do.
+
+MockServerTest - Here is a simple JUnit test that confirms that the MockClient
+and MockServer can exchange a message.  It shows that the firewall and SSL
+certificates are configured properly and that the real servers have a good
+chance of working.
+
+NewUser - This is very similar to UserCreate, but is set up to run outside
+of the development environment and does not include any server components.
+It is used (with care) to add new users to the database.
+
+PasswordHash - This library is used to salt and hash the passwords before
+they are stored by the TrustedServer in the database.
+
+PasswordHashTest - Here is a simple test program for PasswordHash, which
+can throw some exceptions.  This shows they are unlikely to occur.
+
+Pinger - TrustedServerTest and ProvenanceServerTest start up servers, check for
+connectivity, and shut the servers down.  Pinger checks whether a running
+server is listening and leaves it running.  It checks for both servers.
+
+PrivateKeyExtractor - It appears that the Java keytool program will not output
+private keys, probably for security reasons.  The CyaSSL of Haathi cannot
+use *.jks files, however, especially if client validation is used on the server
+(which is currently not the case).  The program included here extracts the
+private key from a Java keystore.
+
+ProvenanceLocalSQLiteDataAccessorTest - While the ProvenanceServerTest sends
+commands through the entire network, this test uses the back door and sends
+commands to the component that accesses the database.  It can simulate
+addition of users, creation of documents, and the like.  Such tests should
+be prepared for each new data storage mechanism.
+
+ProvenanceServer - This is the infamous Provenance server.  For background on
+what it does, please read "Provenance Server.doc" in the README project.  It
+receives commands from the Haathi extension (or ProvenanceServerTest) and
+processes them.  It _should_ also be (remotely) connected to the Trusted
+server, but that connection is presently implemented by simply sharing the
+database.
+
+ProvenanceServerTest - The Haathi extension is what normally provides commands
+to ProvenanceServer, but that extension is not exactly automated.  This project
+can be used to send commands to the Provenance server and check that they were
+accepted.  Currently only a PING command is used to make sure the server is
+awake and responding.  A MockClient is used to send the commands.
+
+README - This is the project you are presumably already viewing.  It contains
+this README file and other possibly helpful documents.
+
+SharedServer - The TrustedServer and ProvenanceServer share a fair amount of
+code.  Previously (in the makefile days) all the class files were thrown into
+a single directory where they could be shared.  From there they would need to
+be untangled for separate deployment.  The new strategy is to collect the
+shared components here and then share the project.
+
+SQLite - The servers require tracking of account details like names and
+passwords, but also cryptographic keys, and the Haathi extension produces
+significant amounts of data itself.  Where should it all be stored?  An sqlite
+database is one possibility that is at least appropriate for a development
+environment and its project is here.
+
+SQLiteTest - The SQLite version number and thread safety is checked with
+this test.
+
+SynchronizeTest - This is a simple test just to verify that synchronization
+works as expected, since the documentation was a little ambiguous.
+
+TrustedLocalSQLiteDataAccessorTest - While the TrustedServerTest sends commands
+through the entire network, this test uses the back door and sends commands
+to the component that accesses the database.  It can simulate loading, storing,
+and auditing documents.  Such tests should be prepared for each new data storage
+mechanism.
+
+TrustedServer - This is the infamous Trusted server.  For background on what it
+does, please read "Provenance Server.doc" in the README project.  It receives
+commands from the Haathi extension (or TrustedServerTest) and processes them.
+It _should_ also be (remotely) connected to the Provenance server, but that
+connection is presently implemented by simply sharing the database.
+
+TrustedServerTest - The Haathi extension is what normally provides commands to
+TrustedServer, but that extension is not exactly automated.  This project can
+be used to send commands to the Trusted server and check that they were
+accepted.  Currently only a PING command is used to make sure the server is
+awake and responding.  A MockClient is used to send the commands.
+
+UserCreate - The user table is supplied with a single user in DatabaseGenerator,
+but that isn't really enough to do anything useful with Haathi.  This project
+adds another three users, a simple user, an auditor, and an administrator so
+that some simple exploration can be performed.
+
+WordNet - This project is used in the preparation of the synonym dictionary
+for synonym watermarking.  It has as input the WordNet data files and will
+eventually output a list of synsets for consumption by Haathi.  In the meantime
+it is used experimentally and can watermark a sample text file and output
+various statistics about the process.
+
+Additional directories store the database, documentation, keystore files, and
+some potentially useful templates.
+
+db - This directory contains the database that will be deployed by, for example,
+DeployComboServer and which is used by various test programs.  After testing
+and before deployment, be sure to rebuild and possibly stock it with
+DatabaseGenerator and UserCreate.
+
+cfg - This directory should contain config.xml which is consulted by the
+running servers and other deployed packages such as NewUser.
+
+doc - JavaDoc documentation is deposited here by the JavaDoc project.  Find
+index.html and open it in a web browser.  Documentation from here may also
+appear in the Eclipse Javadoc window.
+
+keystore - Keys, certificates, and Java keystore (.jks) files are stored here.
+They are first created in KeystoreGenerator/keystore and if/when they are moved
+to this directory, the old values should be backed up somewhere.  Existing
+deployments of the servers and Haathi may be dependent upon the old values.
+
+launches - Eclipse launch configurations are stored here so that they can be imported
+into a new Eclipse workspace.  This directory is now provided with a project file and
+can be imported with the rest of the projects.  Alternatively, from the main menu choose
+File | Import... | Run/Debug | Launch Configurations and press Next >.  Navigate to this
+directory in the next dialog and select the configurations.
+
+templates - Here is the start (cf. a more complete set for C++ in
+haathi/templates) of a standard Java file so that the projects can stay a bit
+consistent.
+
+
+Some projects are more or less library projects that aren't intended to run
+or even build:
+
+	README JSON CustomBouncyCastle SQLite
+	
+A few need building, but have no main themselves and don't run:
+	
+	MockServer MockClient SharedServer
+	
+Many projects run and therefore have run configurations that may include
+parameters or other configuration values.  Be sure to look through the
+configurations before starting up a program.  Some run as Java applications:
+
+	Configuration (but only run once to create a template XML file)
+	PasswordHash
+	DatabaseGenerator TrustedServer ProvenanceServer Pinger UserCreate
+	ComboServer PrivateKeyExtractor
+	List
+	NewUser
+	
+Others run as JUnit tests, which should also be available among the run
+configurations:
+	
+	PasswordHashTest
+	MockServerTest
+	TrustedServerTest TrustedLocalSQLiteDataAccessorTest
+	ProvenanceServerTest ProvenanceLocalSQLiteDataAccessorTest
+	CertificateGeneratorTest
+	
+A small number don't run in a Java way, but are controlled by Ant build
+files.  Eclipse does not allow configuration of these with the other run
+configurations.  For these, right click on build.xml, select Run As or
+Debug As, and then chose Ant Build or preferably Ant Build... first so that
+you can see what targets are available.  These remaining projects are
+	 
+	KeystoreGenerator DeployComboServer DeployList DeployNewUser JavaDoc

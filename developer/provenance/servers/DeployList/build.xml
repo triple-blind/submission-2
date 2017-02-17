@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/servers/DeployList/build.xml#1 $ -->
+<project name="DeployList" default="Deploy" basedir=".">
+	<target name="Deploy" depends="Clean">
+        <jar destfile="List.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="list.List"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./  commons-codec-1.9.jar"/>
+            </manifest>
+            
+            <zipfileset src="res/jar-in-jar-loader.zip"/>
+            <zipfileset dir="../../libjava/commons-codec-1.9" includes="commons-codec-1.9.jar"/>
+            
+            <fileset dir="../JSON/bin"/>
+            <fileset dir="../MockClient/bin" includes="only/"/>
+
+            <fileset dir="../List" includes="cfg/"/>
+            <fileset dir="../List/bin" includes="list/"/>
+            
+            <!-- Include only the necessary keystores -->
+            <fileset dir=".." includes="keystore/haathi.jks"/>
+           	<fileset dir=".." includes="keystore/haathi-trusteds.jks"/>
+        </jar>	
+	</target>
+			
+	<target name="Clean">
+	    <delete>
+	        <fileset dir="." includes="List.jar"/>
+	    </delete>
+	</target>
+</project>

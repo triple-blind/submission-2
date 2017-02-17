@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/CertificateGeneratorTest/README#1 $
+
+The TrustedServer generates certificates, in particular X509 certificates
+in the X509CertificateGenerator class.  This green bar verifies that a
+private/public key pair and the certificate in general can be created.
+Internally to TrustedServer this functionality is provided by BouncyCastle.
+The format of the keystore has been changed so that it matches the format
+of the SSL certificates.  This test assures that and functionality is
+preserved.

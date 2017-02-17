@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/JavaDoc/README#1 $
+
+This project can produce documentation for all of the other projects and
+deposit it all in the doc directory.  Find index.html and open it in a web
+browser.  Neither BouncyCastle nor JUnit are included, the former because
+of size and online availability and the latter because it involves an
+absolute path that isn't easily shared between computers.  Some of the
+documentation should also appear in the Eclipse Javadoc window.  In order for
+build.xml to run successfully (right click, choose Run As or Debug As and
+then Ant Build), javadoc must be available to the operating system (e.g.,
+in the PATH).  javadoc is normally part of the JDK which is not required
+for Eclipse.  If you are only using the JRE, this project may not run.

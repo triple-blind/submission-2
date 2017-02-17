@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ProvenanceServer</name>
+	<comment></comment>
+	<projects>
+		<project>Configure</project>
+		<project>SharedServer</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>lib</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/libjava</locationURI>
+		</link>
+		<link>
+			<name>src/db</name>
+			<type>2</type>
+			<locationURI>PROJECT_LOC/db</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

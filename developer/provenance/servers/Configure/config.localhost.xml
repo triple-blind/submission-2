@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_07" class="java.beans.XMLDecoder">
+ <object class="secure.provenance.config.Config">
+  <void property="developerConfig">
+   <object class="secure.provenance.config.DeveloperConfig">
+    <void property="emailAddress">
+     <string>developer@provenance.com</string>
+    </void>
+    <void property="firstName">
+     <string>Super</string>
+    </void>
+    <void property="lastName">
+     <string>Developer</string>
+    </void>
+    <void property="password">
+     <string>random</string> <!-- erase me after users are configured -->
+    </void>
+   </object>
+  </void>
+  <void property="provenanceServerConfig">
+   <object class="secure.provenance.config.ProvenanceServerConfig">
+    <void property="address">
+     <string>127.0.0.1</string>
+    </void>
+    <void property="port">
+     <int>9988</int>
+    </void>
+   </object>
+  </void>
+  <void property="trustedServerConfig">
+   <object class="secure.provenance.config.TrustedServerConfig">
+    <void property="address">
+     <string>127.0.0.1</string>
+    </void>
+    <void property="port">
+     <int>9987</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

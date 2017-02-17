@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/WordNet/README#1 $
+
+The synonym watermark scheme of Haathi will probably use WordNet as its source
+of data.  This project can be used to process the WordNet database files and
+create lists of most, importantly, unambiguous synonyms.  WordNet.java can
+perform a sample run on the Declaration of Independence among the resources.
+Coca is meant to run experiments on files from the Corpus of Contemporary
+American English.  Several files among the resources include sample data from
+that collection.  These files are considerably experimental.
+ 

@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/ComboServer/README#1 $
+
+Documentation, namely "Provenance Server.doc", seems to strongly imply
+that the two servers are independent entities that coordinate their work
+over the network.  That functionality does not appear to have been
+implemented.  Haathi, however, is oblivious and the system will work,
+especially for testing purposes, if the same computer runs both servers
+and they coordinate their work by sharing the same backend database. 
+This project combines the Trusted and Provenance servers into
+a single program that starts them both up for convenience.  Killing the
+single parent process will also stop both the servers.  This makes for a
+simple test deployment on other machines.

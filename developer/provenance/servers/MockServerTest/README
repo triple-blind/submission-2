@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/MockServerTest/README#1 $
+
+Here is a simple JUnit test that confirms that the MockClient and MockServer
+can exchange a message as should be indicated with the green bar.  It shows
+that the firewall and SSL certificates are configured properly and that the
+real servers have a good chance of working.  That chance is eventually
+increased further by TrustedServerTest and ProvenanceServerTest which use
+the same testing strategy.  It says nothing about the database.  In this test,
+the MockServer is started and stopped by the test; it doesn't need to be
+running in advance.
+ 

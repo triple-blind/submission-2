@@ -1,0 +1,5 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/JSONTest/README#1 $
+
+JSONArray is extended into JSONStringArray in order to add a few
+support methods for ProvenanceServer.  A test is added here just
+to make sure.

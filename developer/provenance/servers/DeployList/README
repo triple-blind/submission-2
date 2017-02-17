@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/DeployList/README#1 $
+
+Running the Ant build should result in List.jar which can be used to
+list Provenance documents or events outside of any development
+environment and independently of Haathi or OpenOffice.  See the
+List project for details about the program.  Deployment is to a .jar
+file which should result in a stand-alone (except for java)
+executable.  If necessary, the config.xml file could be edited after
+deployment to address a different server.  Since this is not expected
+to be the case, the file remains tucked away within the .jar.  Run
+build.xml as an Ant Build to make this work rather than using a Java
+run configuration.

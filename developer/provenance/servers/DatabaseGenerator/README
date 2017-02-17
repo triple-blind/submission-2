@@ -1,0 +1,17 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/DatabaseGenerator/README#1 $
+
+This project creates the local SQLite database tables that the two servers
+can access and populates them with an initial user so that other projects,
+UserCreate for Java or userCreate for C++, can be used to create additional
+users.  Three different databases are actually created: provenance.db,
+shared.db, and trusted.db in the ../db directory.  If the Trusted and
+Provenance servers run on different machines, then they (probably) need to
+have separate databases and also an as yet unimplemented method of coordinating
+their databases.  If they run on the same machine, they can easily access a
+shared database and "communicate" via shared values in the database.  I don't
+think that's the intended design, but it was how even the Amazon AWS version
+was implemented.  As for these local databases, you'll want to edit at least
+the password in this DatabaseGenerator.java file (or edit the resulting
+database) if you don't want to use the default password that everyone else
+knows.  See also the discussion of the db directory in the main README file,
+because it needs to be prepared for deployment.

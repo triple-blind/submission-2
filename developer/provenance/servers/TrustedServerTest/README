@@ -1,0 +1,15 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/TrustedServerTest/README#1 $
+
+The test in question is a simple PING, which could just as well come from
+Haathi.  However, the Haathi extension that normally provides commands to
+TrustedServer is not easily automated.  This project sends commands to the
+TrustedServer and and checks that they are accepted, as evidenced by the green
+bar.  Currently only a PING command is used to make sure the server is awake
+and responding, but more thorough tests could easily be added.  The next
+project, TrustedLocalSQLiteDataAccessorTest takes addresses that responsibility.
+As mentioned previously, a MockClient is used to send the commands.  The
+TrustedServer is started and stopped by the test, so it doesn't need to be
+started ahead of time.  The PING request does not require any use information,
+so this is not a test of the database.  It is conveyed across the network,
+so the real TrustedServer with its configured address, ports, certificates and
+all are actually used.

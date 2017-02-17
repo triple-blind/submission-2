@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/servers/DeployComboServer/build.xml#1 $ -->
+<project name="DeployComboServer" default="Deploy" basedir=".">
+	<target name="Deploy" depends="Clean">
+        <jar destfile="ComboServer.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="only.ComboServer"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ log4j-1.2.9.jar sqlite4java.jar commons-codec-1.9.jar bcpkix-jdk15on-150.jar"/>
+            </manifest>
+            
+            <zipfileset src="res/jar-in-jar-loader.zip"/>
+            
+            <fileset dir="../Configure/bin"/>
+            <fileset dir="../PasswordHash/bin"/>
+            <fileset dir="../ComboServer/bin"/>
+            <fileset dir="../ProvenanceServer/bin"/>
+            <fileset dir="../JSON/bin"/>
+            <fileset dir="../SharedServer/bin"/>
+            <fileset dir="../TrustedServer/bin"/>
+            <fileset dir="../CustomBouncyCastle/bin"/>
+            
+            <zipfileset dir="../../libjava/logging-log4j-1.2.9/dist/lib" includes="log4j-1.2.9.jar"/>
+            <zipfileset dir="../../libjava/sqlite4java-282" includes="sqlite4java.jar"/>
+            <zipfileset dir="../../libjava/commons-codec-1.9" includes="commons-codec-1.9.jar"/>
+            <zipfileset dir="../../libjava/BouncyCastle" includes="bcpkix-jdk15on-150.jar"/>
+        </jar>	
+	
+		<zip destfile="ComboServer.zip">
+			<fileset dir="." includes="ComboServer.jar"/>
+        	<fileset dir="res" includes="ComboServer.sh"/>
+			<zipfileset dir="../db" prefix="db" includes="trusted.db"/>
+			<zipfileset dir="../db" prefix="db" includes="provenance.db"/>
+			<zipfileset dir="../cfg" prefix="cfg" includes="config.xml"/>
+			<fileset dir="../../libjava/sqlite4java-282" includes="**/*.dll"/> <!-- Windows -->
+			<fileset dir="../../libjava/sqlite4java-282" includes="**/*.so"/> <!-- Linux -->
+			<fileset dir="../../libjava/sqlite4java-282" includes="**/*.jnilib"/> <!-- Macintosh -->
+		</zip>
+	</target>
+			
+	<target name="Clean">
+	    <delete>
+	        <fileset dir="." includes="ComboServer.jar"/>
+	        <fileset dir="." includes="ComboServer.zip"/>
+	    </delete>
+	</target>
+</project>

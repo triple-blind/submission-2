@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/JSON/README#1 $
+
+The Haathi extension and servers communicate using the JSON format that is
+provided by this third-party source code.  There is a corresponding cJSON
+project for C++ and also a cJSONTest project (just because of the
+complications of creating shared, cross-platform C++ libraries) with examples.
+The files here are copied verbatim from the JSON website that is linked from
+the Provenance downloads page.  The source is compiled into jar file that is
+reused by other projects.

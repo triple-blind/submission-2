@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/JSON"/>
+	<classpathentry kind="lib" path="lib/logging-log4j-1.2.9/dist/lib/log4j-1.2.9.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/SQLite"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.9/commons-codec-1.9.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

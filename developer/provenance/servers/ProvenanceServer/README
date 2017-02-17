@@ -1,0 +1,15 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/ProvenanceServer/README#1 $
+
+The infamous Provenance server lives here and this description will sound
+very much like that of its companion server, TrustedServer.  For background
+on what it does, please read "Provenance Server.doc" in the README project.
+It receives commands from the Haathi extension (or ProvenanceServerTest) and
+processes them. It _should_ also be (remotely) connected to the Trusted server,
+but that connection is presently implemented by simply sharing the database.
+That database is currently provided by SQLite and is set in getDataAccessor() of
+ProvenanceCommandProcessor.  You'll see the other option there of a
+ProvenanceEC2DynamoDataAccessor there.  Since the AWS version was last working,
+Amazon updated its interface.  All of the ProvenanceServer code was updated to
+compile against the new interface, but it has never actually run or been
+tested.  It is recommended that a ProvenanceEC2DynamoDataAccessorTest project
+be used to test the interface if it ever needs to be used again.

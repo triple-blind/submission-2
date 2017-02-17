@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/servers/DeployNewUser/build.xml#1 $ -->
+<project name="DeployNewUser" default="Deploy" basedir=".">
+	<target name="Deploy" depends="Clean">
+        <jar destfile="NewUser.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="only.NewUser"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./"/>
+            </manifest>
+            
+            <zipfileset src="res/jar-in-jar-loader.zip"/>
+            
+            <fileset dir="../Configure/bin"/>
+            <fileset dir="../JSON/bin"/>
+            <fileset dir="../MockClient/bin"/>
+            <fileset dir="../NewUser/bin"/>          
+        </jar>	
+
+		<zip destfile="NewUser.zip">
+			<fileset dir="." includes="NewUser.jar"/>
+			<zipfileset dir="../cfg" prefix="cfg" includes="config.xml"/>
+		</zip>
+	</target>
+			
+	<target name="Clean">
+	    <delete>
+	        <fileset dir="." includes="NewUser.jar"/>
+	        <fileset dir="." includes="NewUser.zip"/>
+	    </delete>
+	</target>
+</project>

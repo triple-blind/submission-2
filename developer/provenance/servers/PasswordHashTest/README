@@ -1,0 +1,4 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/PasswordHashTest/README#1 $
+
+PasswordHash does include a main that performs some tests, but
+this simple test shows the pretty and reassuring green bar.

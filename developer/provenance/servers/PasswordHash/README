@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/PasswordHash/README#1 $
+
+The passwords stored in the TrustedServer should be salted and hashed
+so that they aren't sitting there in cleartext for anyone to read.
+This library takes care of that.  Unfortunately, the original source
+did not include a package specification so that the code cannot be imported
+into other packages.  The line
+
+package secure.provenance; // Unfortunately, some package should be added here
+
+should be added to the top to get it to play nicely with the rest of the system.

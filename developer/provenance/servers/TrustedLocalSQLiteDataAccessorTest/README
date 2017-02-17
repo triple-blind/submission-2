@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/TrustedLocalSQLiteDataAccessorTest/README#1 $
+
+While the TrustedServerTest sends commands through the entire network,
+this test uses the back door and sends commands to the component that
+accesses the database, in this case the TrustedLocalSQLiteDataAccessor.
+This skips the network infrastructure and also the decoding of the JSON
+command arguments.  It also doesn't need to worry about threading.  It
+can simulate addition of users, creation of documents, and the like.
+Such tests should be prepared for each new data storage mechanism, which
+could be fairly easily configured.  This is the closest that the servers
+have to a scripting mechanisms and will be good for simulation.  No
+server needs to be running for the test.

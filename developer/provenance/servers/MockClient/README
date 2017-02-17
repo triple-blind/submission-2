@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/MockClient/README#1 $
+
+In order to test the (mock) server, a (mock) client is needed.  That client
+might come from the C++ side, but that functionality is not yet assumed.
+Here's a client that can send some simple, hard-coded, requests to
+MockServer for testing.  MockServer assumes that PING requests are received
+and what the client sends is actually a well-formulated request.  As a result,
+MockClient can communicate with the actual TrustedServer or ProvenanceServer
+and is it used in test cases for that purpose.  The client can be configured
+by private static variables to default to settings appropriate for either the
+Trusted or Provenance servers.

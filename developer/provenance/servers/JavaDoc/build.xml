@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/servers/JavaDoc/build.xml#1 $ -->
+<project name="JavaDoc" default="Document" basedir=".">
+    <target name="Document">
+        <javadoc access="private" author="true" classpath="../../libjava/aws-java-sdk-1.6.12/lib/aws-java-sdk-1.6.12.jar;../ProvenanceServer/bin;../../libjava/BouncyCastle/bcpkix-jdk15on-150.jar;../../libjava/sqlite4java-282/sqlite4java.jar;../MockServer/bin;../../libjava/commons-codec-1.9/commons-codec-1.9.jar;../JSON/bin;../MockClient/bin;C:/Users/Keith Alcock/Documents/Binaries/eclipse-kepler-android/plugins/org.hamcrest.core_1.3.0.v201303031735.jar;../../libjava/logging-log4j-1.2.9/dist/lib/log4j-1.2.9.jar;../SharedServer/bin;../CustomBouncyCastle/bin;../TrustedServer/bin;../DatabaseGenerator/bin" destdir="../doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="secure.provenance,only,test,org.json" source="1.7" sourcefiles="../CustomBouncyCastle/src/org/bouncycastle/x509/X509Util.java,../CustomBouncyCastle/src/org/bouncycastle/asn1/x509/Certificate.java" sourcepath="../ProvenanceServerTest/src;../Pinger/src;../TrustedServer/src;../SharedServer/src;../../libjava/JSON;../../libjava/BouncyCastle/bcprov-jdk15on-150;../MockServer/src;../TrustedServerTest/src;../ComboServer/src;../MockServerTest/src;../PrivateKeyExtractor/src;../UserCreate/src;../ProvenanceLocalSQLiteDataAccessorTest/src;../ProvenanceServer/src;../CustomBouncyCastle/src;../DatabaseGenerator/src;../TrustedLocalSQLiteDataAccessorTest/src;../CertificateGeneratorTest/src;../MockClient/src" splitindex="true" use="true" version="true"/>
+    </target>
+	
+	<target name="Clean">
+	    <delete includeEmptyDirs="true">
+	        <fileset dir="../doc" includes="**/*"/>
+	    </delete>
+	</target>	
+</project>

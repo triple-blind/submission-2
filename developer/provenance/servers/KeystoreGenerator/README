@@ -1,0 +1,17 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/KeystoreGenerator/README#1 $
+
+This project can be used to generate a complete set of certificates for the
+two Trusted and Provenance servers and Haathi.  Be careful, since this
+source code and its default passwords are public, anyone can extract the
+private keys that it produces.  The project should be rerun before the system
+goes into production.  It is run from build.xml.  Right click on build.xml
+and run or debug as an Ant Build.  Files are written to a keystore directory
+within the project.  In order to use the values with deployed server or even
+any of the test programs, they need to be copied to the outer keystore
+directory, servers/keystore.  Be sure to archive the values that used to be
+there, especially if they are supporting any deployed clients or servers.
+The way the certificates are generated is probably only one of multiple ways
+that the system can be put together.  It is unclear from the documentation
+whether new users, especially ones needing eventual client validation, are
+required to have their own certificates.  This project would need to be changed
+to support multiple Haathi certificates.

@@ -1,0 +1,13 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/Configure/README#1 $
+
+This project is used to manage the configuration of the TrustedServer,
+ProvenanceServer, and the developer account for the database.  The needed
+information is collected into Config objects which can be serialized and
+deserialzed into an XML file which by default is called config.xml and
+should be placed in the cfg directory for use with other projects.
+
+Configure.main() creates an empty config.xml file to be filled in by
+hand and copied to the correct location.  This can been done twice already
+and the resulting files are called config.localhost.xml and config.escrow.xml.
+One of these has likely been copied to cfg/config.xml.  Be sure to change
+it depending on whether you are developing or deploying.

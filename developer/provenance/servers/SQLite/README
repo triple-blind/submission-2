@@ -1,0 +1,12 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/SQLite/README#1 $
+
+Account details like names and passwords, but also cryptographic keys, and
+the significant amounts of data the Haathi extension produces are stored in
+one or multiple databases.  One possibility especially particularly well suited
+for testing is a simple sqlite database.  This project includes the libraries
+and the JNI files that provide access to the database.  Libraries are included
+for all three target platforms and the ComboServer is deployed with all files.
+At one point in the project's history, an Amazon Web Services (AWS) EC2 device
+was used, but it isn't currently.  The configured database is set in
+getDataAccessor() of the TrustedCommandProcessor or ProvenanceCommandProcessor.
+So, you don't need to have an AWS account in order to work on this.

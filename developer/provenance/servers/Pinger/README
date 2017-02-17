@@ -1,0 +1,11 @@
+$Header$
+
+The Pinger is similar to the TrustedServerTest and ProvenanceServerTest,
+but the tests start up servers and shut them down in their check for
+connectivity.  This doesn't especially help test a running server.  The
+Pinger checks whether an already running server is listening and leaves
+it running.  It checks for both servers.  Because it's not uncommon for
+one or the other not to be started up, especially during testing in which
+mock servers may be using the same address and port, Pinger is not
+implemented as a test.  Start a server, or believe one to have been
+started, and run Pinger to check for a confirmation message.

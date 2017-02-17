@@ -1,0 +1,11 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/CustomBouncyCastle/README#1 $
+
+BouncyCastle provides cryptographic services for the server side when the
+standard Java libraries can't handle them.  This occurs in one specific
+place: secure.provenance.X509CertificateGenerator.java in the TrustedServer
+project.  Of the multiple BouncyCastle components, only the bcprov and
+bcpkix are needed.  Two BouncyCastle files from bcprov had to be modified in
+order to provide the needed functionality.  For the most part this involved
+making private methods or variables public.  Had they only been protected,
+functionality could have been overridden with a subclass.  In any case, this
+project provides access to the required packages, modified or not. 

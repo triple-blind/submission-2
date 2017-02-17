@@ -1,0 +1,10 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/NewUser/README#1 $
+
+This is a tiny project including a class which will create a new user.
+Unlike UserCreate, it does not include any server and this can be
+deployed with DeployNewUser so that it can be run outside of the
+development system.  The TrustedServer should be running on the local
+machine.  Beware that the developer's credentials are contained
+in the source code.  In addition, the new user's password is entered
+on the command line.  Various shells which track history may capture it.
+ 

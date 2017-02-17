@@ -1,0 +1,9 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/servers/SharedServer/README#1 $
+
+Code shared between the TrustedServer and ProvenanceServer is organized into
+this project.  A reasonable amount of code has been factored out of the servers
+and placed into base classes.  Other classes are shared entirely.  The keystore
+directory is configured here so that it isn't duplicated in the server projects
+and a property file is provided for AwsCredentials, even though AWS is not
+currently being used.  The properties used to be hard coded.  Lastly, the
+libraries that both servers used are included.

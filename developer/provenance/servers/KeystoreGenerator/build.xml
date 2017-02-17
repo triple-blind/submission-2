@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Header: //MyDataDepot/Projects/provenance-autoType2/servers/KeystoreGenerator/build.xml#1 $ -->
+<project name="GenerateKeystores" default="Generate" basedir="./keystore">
+	<property name="CaPassword" value="password"/>
+	<property name="TrustedPassword" value="password"/>
+	<property name="ProvenancePassword" value="password"/>	
+	<property name="HaathiPassword" value="password"/>
+	<property name="GeneratorPassword" value="password"/>
+	<property name="Validity" value="1000"/>
+	
+	<target name="Generate" depends="Clean">
+	    <!-- Create Ca keystore -->
+		<exec executable="keytool">
+		    <arg line='-genkey -keystore ca.jks -alias ca -storepass ${CaPassword} -keypass ${CaPassword} -dname "CN=ca" -keyalg RSA -validity ${Validity}'/>
+		</exec>
+		
+		<!-- Create keystores for TrustedServer, ProvenanceServer, and Haathi (client) -->
+		<exec executable="keytool">
+		    <arg line='-genkey -keystore trusted.jks -alias trusted -storepass ${TrustedPassword} -keypass ${TrustedPassword} -dname "CN=trusted" -keyalg RSA -validity ${Validity}'/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line='-genkey -keystore provenance.jks -alias provenance -storepass ${ProvenancePassword} -keypass ${ProvenancePassword} -dname "CN=provenance" -keyalg RSA -validity ${Validity}'/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line='-genkey -keystore haathi.jks -alias haathi -storepass ${HaathiPassword} -keypass ${HaathiPassword} -dname "CN=haathi" -keyalg RSA -validity ${Validity}'/>
+		</exec>
+		
+		<!-- Export the Ca certificate so that it can be imported as trusted -->
+		<exec executable="keytool">
+		    <arg line="-exportcert -keystore ca.jks -alias ca -storepass ${CaPassword} -file ca-cert.pem -rfc"/>
+		</exec>
+		
+		<!-- Import the trusted Ca certificate to the other keystores -->
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore trusted.jks -storepass ${TrustedPassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore provenance.jks -storepass ${ProvenancePassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore haathi.jks -storepass ${HaathiPassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>
+		
+		<!-- Have the ca sign the three other certificates -->
+		<!-- First the TrustedServer -->
+		<exec executable="keytool">
+		    <arg line="-certreq -keystore trusted.jks -alias trusted -storepass ${TrustedPassword} -file step1"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-gencert -keystore ca.jks -alias ca -storepass ${CaPassword} -infile step1 -outfile step2 -validity ${Validity}"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore trusted.jks -alias trusted -storepass ${TrustedPassword} -file step2"/>
+		</exec>
+		<delete file="step1"/>
+		<delete file="step2"/>
+		<!-- Then the ProvenanceServer -->
+		<exec executable="keytool">
+		    <arg line="-certreq -keystore provenance.jks -alias provenance -storepass ${ProvenancePassword} -file step1"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-gencert -keystore ca.jks -alias ca -storepass ${CaPassword} -infile step1 -outfile step2 -validity ${Validity}"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore provenance.jks -alias provenance -storepass ${ProvenancePassword} -file step2"/>
+		</exec>
+		<delete file="step1"/>
+		<delete file="step2"/>
+		<!-- Last of all Haathi -->
+		<exec executable="keytool">
+		    <arg line="-certreq -keystore haathi.jks -alias haathi -storepass ${HaathiPassword} -file step1"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-gencert -keystore ca.jks -alias ca -storepass ${CaPassword} -infile step1 -outfile step2 -validity ${Validity}"/>
+		</exec>
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore haathi.jks -alias haathi -storepass ${HaathiPassword} -file step2"/>
+		</exec>
+		<delete file="step1"/>
+		<delete file="step2"/>
+						
+		<!-- Export certificates for keystores so that they can be trusted by others -->
+		<exec executable="keytool">
+		    <arg line="-exportcert -keystore trusted.jks -alias trusted -storepass ${TrustedPassword} -file trusted-cert.pem -rfc"/>
+		</exec>	
+		<exec executable="keytool">
+		    <arg line="-exportcert -keystore provenance.jks -alias provenance -storepass ${ProvenancePassword} -file provenance-cert.pem -rfc"/>
+		</exec>	
+		<exec executable="keytool">
+		    <arg line="-exportcert -keystore haathi.jks -alias haathi -storepass ${HaathiPassword} -file haathi-cert.pem -rfc"/>
+		</exec>	
+						
+		<!-- Set up trusted keystores -->
+		<!-- Trusted trusts Ca, ProvenanceServer, and Haathi -->
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore trusted-trusteds.jks -storepass ${TrustedPassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore trusted-trusteds.jks -storepass ${TrustedPassword} -file provenance-cert.pem -alias provenance"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore trusted-trusteds.jks -storepass ${TrustedPassword} -file haathi-cert.pem -alias haathi"/>
+		</exec>						
+		<!-- Provenance trusts Ca, TrustedServer, and Haathi -->
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore provenance-trusteds.jks -storepass ${ProvenancePassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore provenance-trusteds.jks -storepass ${ProvenancePassword} -file trusted-cert.pem -alias trusted"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore provenance-trusteds.jks -storepass ${ProvenancePassword} -file haathi-cert.pem -alias haathi"/>
+		</exec>						
+		<!-- Haathi trusts Ca, TrustedServer, and ProvenanceServer -->
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore haathi-trusteds.jks -storepass ${HaathiPassword} -file ca-cert.pem -alias ca -trustcacerts -noprompt"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore haathi-trusteds.jks -storepass ${HaathiPassword} -file trusted-cert.pem -alias trusted"/>
+		</exec>						
+		<exec executable="keytool">
+		    <arg line="-importcert -keystore haathi-trusteds.jks -storepass ${HaathiPassword} -file provenance-cert.pem -alias provenance"/>
+		</exec>						
+				
+		<!-- The Trusted Server generates public and private keys and must have a certificate to do so. -->
+		<!-- See X509CertificateGenerator.java for details. -->
+		<exec executable="keytool">
+		    <arg line='-genkey -keystore generator.jks -alias generator -storepass ${GeneratorPassword} -keypass ${GeneratorPassword} -dname "CN=ca" -keyalg RSA -validity ${Validity}'/>
+		</exec>
+				
+		<!-- Haathi (in C++ using Cyassl) can't deal with jks files, so the private key must be dumped. -->
+		<!-- This is only used if client validation is required in the Provenance Server. -->
+		<java classname="only.PrivateKeyExtractor" output="haathi-key.pem" classpath="${classpath};../../PrivateKeyExtractor/bin">
+		    <arg line="'${basedir}/haathi.jks' ${HaathiPassword} haathi"/>
+		</java>
+		
+		<!-- Haathi can connect to three default servers and Ca certificates are needed for them all. -->
+		<!-- For now, use ca-cert.pem and make three appropriately named copies.  See the defaultCertificates project for details. -->
+		<copy file="ca-cert.pem" tofile="ca-cert-LocalServer.pem" overwrite="true"/>
+		<copy file="ca-cert.pem" tofile="ca-cert-EC2Server.pem" overwrite="true"/>
+		<copy file="ca-cert.pem" tofile="ca-cert-CGIServer.pem" overwrite="true"/>
+		
+		<!-- Remind user of final steps -->
+		<echo>
+		    You probably want to copy the contents of this project's private keystore to the top level keystore
+		    which is used by all the programs.  It might be a good idea to make a backup of that one first.
+		</echo>
+	</target>
+			
+	<target name="Clean">
+	    <delete>
+	        <fileset dir="." includes="**/*.jks"/>
+	        <fileset dir="." includes="**/*.pem"/>
+	    </delete>
+	</target>
+</project>

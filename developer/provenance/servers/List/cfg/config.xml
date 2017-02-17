@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_07" class="java.beans.XMLDecoder">
+ <object class="list.config.Config">
+  <void property="trustedServerConfig">
+   <object class="list.config.TrustedServerConfig">
+    <void property="address">
+     <string>escrow.cs.arizona.edu</string>
+     <!--string>localhost</string-->
+    </void>
+    <void property="port">
+     <int>9987</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
