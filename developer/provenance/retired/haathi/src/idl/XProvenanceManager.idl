@@ -1,0 +1,131 @@
+#ifndef HAATHI_XPROVENANCEMANAGER_IDL
+#define HAATHI_XPROVENANCEMANAGER_IDL
+
+// Yes, the IDLC preprocessor is very similar to C/C++ preprocessor. 
+// We have to "#ifndef" everything to prevent multiple inclusion.
+//
+// We can (must) also use #include for other .idl files.
+
+// namespace com::sun::star::beans
+
+#include <com/sun/star/beans/PropertyValue.idl>
+
+// namespace com::sun::star::lang
+
+#include <com/sun/star/lang/XComponent.idl>
+
+// namespace com::sun::star::uno
+
+#include <com/sun/star/uno/XInterface.idl>
+#include <com/sun/star/uno/Exception.idl>
+#include <com/sun/star/uno/RuntimeException.idl>
+
+// namespace com::sun::star::util
+
+#include <com/sun/star/util/URL.idl>
+
+// Custom IDL files
+
+#include "ProvenanceDocumentType.idl"
+#include "ProvenanceExceptions.idl"
+
+
+module haathi {
+
+/**
+ This interface implements the core manager that handles the server connections
+ for provenance connection.
+ */
+interface XProvenanceManager
+{
+	/**
+	 This method will login to the Trusted Server at the given URL.
+
+	 @param serverURL -- the URL of the Trusted Server.
+	 @param username -- the username to log in with.
+	 @param password -- the password to log in with.
+	 @return -- True if logged in successfully; false if denied.
+	 @throw ProvenanceNetworkException -- thrown if there is an error during the network communication.
+	 */
+	boolean login(
+			[in] string serverURL,
+			[in] string username,
+			[in] string password)
+		raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This method will logout from the current Trusted Server, if logged in.
+	 */
+	boolean logout()
+		raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This method will return the list of users available at this server
+	 (which you are authorized to see).
+
+	 @return -- a list of users in the server that are visible to the current user.
+	 @throw ProvenanceNetworkException -- thrown if there is an error during the network communication.
+	 */
+	sequence< string > listUsers()
+			raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This method will return the list of auditors available at this server
+	 (which you are authorized to see).
+
+	 @return -- a list of auditors in the server that are visible to the current user.
+	 @throw ProvenanceNetworkException -- thrown if there is an error during the network communication.
+	 */
+	sequence< string > listAvailableAuditors()
+			raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This method will return the list of documents that are available for editing
+	 with the current user.
+
+	 @return -- a list of documents that can be editted by the current user.
+	 @throw ProvenanceNetworkException -- thrown if there is an error during the network communication.
+	 */
+	sequence< string > listEditableDocuments()
+			raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This method will return the list of auditors that are available for auditing
+	 with the current user.
+
+	 @return -- a list of auditors that can audit the current user.
+	 @throw ProvenanceNetworkException -- thrown if there is an error during the network communication.
+	 */
+	sequence< string > listAuditableDocuments()
+			raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This function will attempt to create a new provenance document with the given properties,
+	 and with the currently logged in user.
+
+	 In case of an error, an exception will be thrown.
+
+	 The options that can be specified are as follows ---- TODO
+
+	 @param type -- the "type" of document to create, i.e WRITER, SPREADSHEET, etc.
+	 @param document_name -- the name of the document
+	 @param options -- A sequence of any optional properties.
+	 */
+	com::sun::star::lang::XComponent createProvenanceDocument(
+			[in] haathi::ProvenanceDocumentType documentType,
+			[in] string documentName,
+			[in] sequence< com::sun::star::beans::PropertyValue > options )
+			raises (haathi::ProvenanceNetworkException);
+
+	/**
+	 This function will load a provenance document with the given information.
+	 */
+	com::sun::star::lang::XComponent loadProvenanceDocument(
+			[in] string document_name)
+			raises (haathi::ProvenanceNetworkException);
+
+}; // interface XProvenanceManager
+
+}; // namespace haathi
+
+#endif

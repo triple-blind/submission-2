@@ -1,0 +1,19 @@
+#ifndef HAATHI_PROVENANCEEXCEPTION_IDL
+#define HAATHI_PROVENANCEEXCEPTION_IDL
+
+#include <com/sun/star/uno/XInterface.idl>
+#include <com/sun/star/uno/Exception.idl>
+
+module haathi {
+
+/**
+ Exceptions of this type are thrown when there are problems communicating
+ with the provenance servers.
+ */
+exception ProvenanceNetworkException : com::sun::star::uno::Exception
+{
+};
+
+}; // module haathi
+
+#endif

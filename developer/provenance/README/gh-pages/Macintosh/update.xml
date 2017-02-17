@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description
+		xmlns="http://openoffice.org/extensions/update/2006"
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+	<identifier value="com.provenance.extensions.haathi"/>
+	<version value="0.31" /> 
+	<update-download>
+		<src xlink:href="http://collberg.github.io/provenance/gh-pages/Macintosh/haathi.oxt" />
+	</update-download>
+</description>

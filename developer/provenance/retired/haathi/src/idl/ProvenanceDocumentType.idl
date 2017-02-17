@@ -1,0 +1,25 @@
+#ifndef HAATHI_PROVENANCEDOCUMENTTYPE_IDL
+#define HAATHI_PROVENANCEDOCUMENTTYPE_IDL
+
+#include <com/sun/star/uno/XInterface.idl>
+
+
+module haathi {
+
+/**
+ This enum outlines the available provenance document types that the
+ Haathi Provenance extension will handle.
+
+ Note that as of now, only WRITER is actually implemented...
+ TODO -- Establish provenance for the other provenance types.
+ */
+enum ProvenanceDocumentType
+{
+	WRITER,
+	SPREADSHEET,
+	KEYNOTE
+};
+
+}; // module haathi
+
+#endif

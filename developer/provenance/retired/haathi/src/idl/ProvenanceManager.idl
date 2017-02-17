@@ -1,0 +1,46 @@
+#ifndef HAATHI_PROVENANCEMANAGER_IDL
+#define HAATHI_PROVENANCEMANAGER_IDL
+
+// com::sun::star::lang
+
+#include <com/sun/star/lang/XMain.idl>
+#include <com/sun/star/lang/XComponent.idl>
+
+// com::sun::star::uno
+
+#include <com/sun/star/uno/XInterface.idl>
+
+// Haathi Components
+
+#include "XProvenanceManager.idl"
+
+module haathi {
+
+service ProvenanceManager
+{
+	/**
+	 This interface handles the creation and handling of provenance documents on the cloud.
+	 */
+	interface haathi::XProvenanceManager;
+
+	/**
+	 This interface allows for this module to be called from different contexts other than
+	 just the openoffice GUI menu. This is mainly used for scripting.
+	 */
+	interface com::sun::star::lang::XMain;
+
+	/**
+	 This property stores the currently logged in user.
+	 */
+	[readonly, property] string currentUser;
+
+	/**
+	 This property stores the currently opened documents in this module.
+	 */
+	[readonly, property] sequence< string > currentOpenDocuments;
+
+}; // service ProvenanceManager
+
+}; // module haathi
+
+#endif

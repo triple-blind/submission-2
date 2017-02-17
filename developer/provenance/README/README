@@ -1,0 +1,59 @@
+$Header: //MyDataDepot/Projects/provenance-autoType2/README/README#1 $
+
+Welcome to the Provenance source code.
+
+If you have downloaded the source from GitHub, be sure to see the
+NOTE and the end of this file.
+
+In addition to README, you should now see _six_ directories here:
+
+haathi - C++ source code for the OpenOffice extension
+haathi4j - Java source code related to the extension
+libcpp - C++ libraries used for haathi
+libjava - Java libraries used for the servers
+retired - Files no longer actively used
+servers - Java source code used for the Trusted/Provenance servers
+
+The two library directories shouldn't be changed except perhaps
+if new versions of the libraries are published.  Although files have
+been unzipped, rearranged, and culled, none has actually been
+edited (with the exception of cJSON.c).  Save that for files within
+the haathi and servers directories.
+
+The haathi source code directory contains a Microsoft Visual C++
+solution for use with Windows and Eclipse projects for use
+with Linux and Macintosh computers.  For best results, point those
+tools to the file/directory.  For Visual C++ that means simply opening
+the solution file.  For Eclipse that means to create a workspace in
+the haathi directory and to import the projects.  Continue with the
+README project that you should find.
+
+For advice on precisely what tools to use for haathi above and the
+servers below, see the file index.html in the top level README
+directory.  You may not have that file yet because it is in the 
+"gh-pages" branch of the repository.
+
+The haathi4j directory is relatively new and contains projects
+related to Haathi that can be written in Java.  These are presently
+mostly for test and evaluation.  Eclipse should work on any of the
+three supported platforms.  Starting up a Java program that accesses
+OpenOffice is relatively complicated, so the launch configurations are
+finicky and may need to be modified for your system configuration.
+
+The servers source code file contains Eclipse projects for
+all three platforms: Windows, Linux, and Macintosh.  Start Eclipse
+using that directory as a workspace, import the projects, and continue
+with the README project that you should find.
+
+The client and server projects refer to files in ../libcpp and
+../libjava, respectively.  If you put your workspace somewhere besides
+haathi or servers, library files will still be expected to be found
+at these relative locations.  So, either put the workspace in a sibling
+directory to haathi and servers or move the library files as needed.
+
+Also note that not all directories in Haathi include project files.  This
+means that if you import all the projects into a different directory, not
+all the necessary files will be copied to that directory.  You will be
+missing some and that won't be obvious until compilation.  It is probably
+better to put the workspace directly in haathi until it is obvious how
+things work.

@@ -1,0 +1,73 @@
+#ifndef HAATHI_XPROVENANCEDOCUMENT_IDL
+#define HAATHI_XPROVENANCEDOCUMENT_IDL
+
+// Yes, the IDLC preprocessor is very similar to C/C++ preprocessor. 
+// We have to "#ifndef" everything to prevent multiple inclusion.
+//
+// We can (must) also use #include for other .idl files.
+
+#include <com/sun/star/uno/XInterface.idl>
+#include <com/sun/star/lang/XComponent.idl>
+#include <com/sun/star/uno/Exception.idl>
+#include <com/sun/star/uno/RuntimeException.idl>
+#include <com/sun/star/beans/PropertyValue.idl>
+
+#include <com/sun/star/io/IOException.idl>
+#include <com/sun/star/lang/IllegalArgumentException.idl>
+
+/**
+ @file XProvenanceDocument.idl
+
+ @author Aaron Gibson
+ 
+ // Yes, let it be known that this file was created on Friday the 13th.
+ @date Friday July 13, 2012
+
+ @brief 
+ This file outlines the interface we desire for a XProvenanceDocument.
+*/
+module haathi {
+
+/**
+ This interface defines the functionality that we demand of a Provenance Document. 
+
+ Note that this does not yet grant access to the details of the type of document or 
+ streams to send the provenance to! That is all implemented internally inside the 
+ component itself. 
+ (Remember, we want to hide all of this information from the attacker.) 
+ */
+interface XProvenanceDocument : com::sun::star::uno::XInterface
+{
+	/**
+	 This function creates a Provenance Document from the given input arguments.
+	 
+	 Note that these input arguments are similar to the "MediaDescriptor" object
+	 for XComponentLoader's "loadComponentFromURL()". (For a reminder of this call, see: 
+	 www.openoffice.org/api/docs/common/ref/com/sun/star/document/MediaDescriptor.html)
+	 
+	 However, for this custom XProvenanceDocument, we instead must take in different 
+	 arguments. The property names, followed by their available values are listed 
+	 below:
+	 DocumentType -- Writer, Spreadsheet, etc. (Note, only Writer is currently supported)
+	 
+	 @throw com::sun::star::io::IOException -- thrown when ...?
+	 @throw com::sun::star::lang::IllegalArgumentException -- thrown when invalid
+	 		properties are passed in.
+	 @throws com::sun::star::Exception -- thrown for a variety of reasons.
+	 */
+	com::sun::star::lang::XComponent createProvenanceDocument( [in] sequence< com::sun::star::beans::PropertyValue > args)
+		raises (
+		com::sun::star::io::IOException, 
+		com::sun::star::lang::IllegalArgumentException,
+		com::sun::star::uno::RuntimeException);
+	
+	boolean save();
+	boolean copy();
+	boolean load();
+
+}; // interface XProvenanceDocument
+
+}; // namespace haathi
+
+#endif
+
